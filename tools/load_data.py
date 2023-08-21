@@ -1,5 +1,5 @@
 import torch
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, Subset
 from config import Config
 
 config = Config()
@@ -20,23 +20,36 @@ class CustomDataset(Dataset):
         return sample
 
 
-def load_data(filepath: str):
-    data_tensor = torch.load(filepath)
+def load_data(is_train: bool = True):
+    data_tensor = torch.load(config.train_unknown_pt)
 
     # 创建数据集和数据加载器
     dataset = CustomDataset(data_tensor)
 
-    data_loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True)
-    return data_loader
+    # 计算分割索引
+    total_samples = len(data_tensor)
+    train_size = int(config.division_rate * total_samples)
+
+    train_subset = Subset(dataset, range(train_size))
+    test_subset = Subset(dataset, range(train_size, total_samples))
+
+    # 创建数据加载器
+    train_loader = DataLoader(train_subset, batch_size=config.batch_size, shuffle=True)
+    test_loader = DataLoader(test_subset, batch_size=config.batch_size, shuffle=False)  # 不需要在测试时打乱顺序
+    if is_train:
+        return train_loader
+    else:
+        return test_loader
 
 
 if __name__ == "__main__":
     # 获取第一个批次
-    dataloader = load_data(config.train_unknown_pt)
+    dataloader = load_data(is_train=True)
     print(len(dataloader))
     first_batch = next(iter(dataloader))
 
     print("Features in the first batch:")
-    print(first_batch['features'])  # 打印特征
+    print(first_batch['features'].shape)  # 打印特征
+    print(first_batch['features'][0])  # 打印特征
     print("Labels in the first batch:")
     print(first_batch['label'])  # 打印标签
