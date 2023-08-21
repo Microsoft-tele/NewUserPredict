@@ -1,4 +1,4 @@
-# newUserPredict
+# NewUserPredict
 
 # Notice: I decide to divide the dataset into two parts. One contains udmap, another dose not contain udmap
 
@@ -8,9 +8,9 @@
 
 ```json
 [
-   {"key9":"unknown"},5
-   {"key8":"unknown"},3
-   {"key7":"unknown"},4
+   {"key9":"unknown"},
+   {"key8":"unknown"},
+   {"key7":"unknown"},
    
    {"key6": "unknown"},
    {"key1":"unknown","key2":"unknown","key6":"unknown"},

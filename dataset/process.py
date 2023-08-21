@@ -1,8 +1,10 @@
 import pandas as pd
 import json
+from config import Config
 
 # 读取CSV文件
-df = pd.read_csv('train.csv')
+config = Config()
+df = pd.read_csv(config.train_csv)
 
 
 # 将JSON格式的'udmap'列转换为字典，处理NaN值和unknown

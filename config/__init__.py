@@ -24,7 +24,11 @@ class Config:
         self.train_known_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_csv"])
         self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
 
+        # Load
+        self.division_rate = config_file["division_rate"]
+
         self.input_size = config_file["input_size"]
+        self.hide_size = config_file["hide_size"]
         self.lr = config_file["lr"]
         self.num_epochs = config_file["num_epochs"]
         self.batch_size = config_file["batch_size"]
