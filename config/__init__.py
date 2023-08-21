@@ -1,29 +1,37 @@
+import os
+
+import pandas
 import yaml
-with open("./config.yaml", "r") as f:
-    config_file = yaml.safe_load(f)
+
+
 class Config:
-    def __init__(self,i):
-        self.train_unknown_csv_filepath= config_file["train_unknown_csv_filepath"]
-        self.train_unknown_save_path= config_file["train_unknown_csv_filepath"]
-        self.train_csv= config_file["train_csv"]
-        self.train_unknown_csv= config_file["train_unknown_csv"]
-        self.train_known_csv= config_file["train_known_csv"]
-        self.analyse_read_csv= config_file["analyse_read_csv"]
-        self.processed_fil_1= config_file["processed_fil_1"]
-        self.processed_fil_2= config_file["processed_fil_2"]
-        self.processed_fil_3= config_file["processed_fil_3"]
-        self.processed_fil_4= config_file["processed_fil_4"]
-        self.log_analyse= config_file["log_analyse"]
-        self.output_key1 = config_file["output_key1"]
-        self.output_key2 = config_file["output_key2"]
-        self.output_key3 = config_file["output_key3"]
-        self.output_key4 = config_file["output_key4"]
-        self.output_key5 = config_file["output_key5"]
-        self.output_key6 = config_file["output_key6"]
-        self.output_key7 = config_file["output_key7"]
-        self.output_key8 = config_file["output_key8"]
-        self.output_key9 = config_file["output_key9"]
-        self.input_size= 10
-        self.lr= 0.0001
-        self.num_epochs= 100
-        self.batch_size= 512
+    def __init__(self):
+        self.__PROJECT_DIR__ = os.path.abspath(os.path.join(os.getcwd(), ".."))
+
+        with open(os.path.join(self.__PROJECT_DIR__, "config", "config.yaml"), "r") as f:
+            config_file = yaml.safe_load(f)
+
+        # Train dataset absolute path
+        self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
+        # Test dataset absolute path
+
+        # Train dataset which has been divided into two parts
+        self.train_unknown_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_csv"])
+        self.train_unknown_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_pt"])
+
+        # Test dataset which has been divided into two parts
+        # Maybe this process is useless
+        self.train_known_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_csv"])
+        self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
+
+        self.input_size = config_file["input_size"]
+        self.lr = config_file["lr"]
+        self.num_epochs = config_file["num_epochs"]
+        self.batch_size = config_file["batch_size"]
+
+
+if __name__ == "__main__":
+    config = Config()
+    print(config.train_csv)
+    test_csv = pandas.read_csv(config.train_csv)
+    print(test_csv)
