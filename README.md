@@ -1,6 +1,6 @@
 # newUserPredict
 
-# Notice: I decide to divide the dataset into two parts. One contains udmap, another is not including udmap
+# Notice: I decide to divide the dataset into two parts. One contains udmap, another dose not contain udmap
 
 ## 1. udmap analyse
 
