@@ -7,8 +7,11 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import torch.nn.functional as F
 
+from config import Config
 
-# 读取 CSV 文件，不将第一行视为列名
+config = Config()
+
+
 def generate_unknown(filepath: str, save_path: str):
     data = pd.read_csv(filepath)
 
@@ -83,5 +86,3 @@ def generate_unknown(filepath: str, save_path: str):
 
 if __name__ == '__main__':
     generate_unknown("../dataset/train_unknown_DayHour.csv", "./train_unknown.pt")
-
-

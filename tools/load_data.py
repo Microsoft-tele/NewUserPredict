@@ -1,5 +1,8 @@
 import torch
 from torch.utils.data import Dataset, DataLoader
+from config import Config
+
+config = Config()
 
 
 class CustomDataset(Dataset):
@@ -22,14 +25,14 @@ def load_data(filepath: str):
 
     # 创建数据集和数据加载器
     dataset = CustomDataset(data_tensor)
-    batch_size = 512
-    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+
+    data_loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True)
     return data_loader
 
 
 if __name__ == "__main__":
     # 获取第一个批次
-    dataloader = load_data("../data_generate/train_unknown.pt")
+    dataloader = load_data(config.train_unknown_pt)
     print(len(dataloader))
     first_batch = next(iter(dataloader))
 

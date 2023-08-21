@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/newUserPredict.iml" filepath="$PROJECT_DIR$/.idea/newUserPredict.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NewUserPredict.iml" filepath="$PROJECT_DIR$/.idea/NewUserPredict.iml" />
     </modules>
   </component>
 </project>
