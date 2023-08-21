@@ -1,10 +1,10 @@
 # newUserPredict
 
-# Notice: I decide to divide dataset to two parts. One is including udmap, another is not including udmap
+# Notice: I decide to divide the dataset into two parts. One contains udmap, another dose not contain udmap
 
 ## 1. udmap analyse
 
-### There are ten different type of udmap
+### There are ten different types of udmap
 
 ```json
 [
@@ -12,11 +12,11 @@
    {"key8":"unknown"},3
    {"key7":"unknown"},4
    
-   {"key6":"unknown"},
+   {"key6": "unknown"},
    {"key1":"unknown","key2":"unknown","key6":"unknown"},
    {"key3":"unknown","key1":"unknown","key4":"unknown","key2":"unknown","key5":"unknown"},
    {"key4":"unknown","key5":"unknown"},
-   {"key3":"unknown"},
+   {"key3": "unknown"},
    {"key3":"unknown","key2":"unknown"},
    {"key1":"unknown","key2":"unknown"}
 ]
@@ -31,5 +31,3 @@
 3. 接下来，你将这15个特征输入到一个全连接层中。全连接层可以学习特征之间的复杂关系，并生成更高级别的特征表示。
 
 4. 最后，使用二分类任务来输出两个值，并将其与标准答案进行对比。通过计算损失函数并进行反向传播，使模型逐步调整参数以最小化损失，从而提高模型在二分类任务上的性能。
-
-5.我是小组成员
