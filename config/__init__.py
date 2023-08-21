@@ -1,0 +1,29 @@
+class Config:
+    def __init__(self,i):
+        self.generate_unknown_filepath= "../dataset/train_unknown.csv"
+        self.generate_unknown_save_path= "./train_unknown.pt"
+        self.process_csv= 'train.csv'
+        self.process_unknown_csv= 'train_unknown.csv'
+        self.process_known_csv= 'train_known.csv'
+        self.analyse_read_csv= './train.csv'
+        self.processed_fil_1= 'processed_file.txt'
+        self.processed_fil_2= 'processed_file_2.txt'
+        self.processed_fil_3= 'processed_file_3.txt'
+        self.processed_fil_4= 'processed_file_4.txt'
+        self.log_analyse= 'log_analyse'
+        self.output_key1='output_key1.json'
+        self.output_key2 = 'output_key1.json'
+        self.output_key3 = 'output_key1.json'
+        self.output_key4 = 'output_key1.json'
+        self.output_key5 = 'output_key1.json'
+        self.output_key6 = 'output_key1.json'
+        self.output_key7 = 'output_key1.json'
+        self.output_key8 = 'output_key1.json'
+        self.output_key9 = 'output_key1.json'
+        self.data_loader_path= "../data_generate/train_unknown.pt"
+        self.input_size= 10
+        self.lr1= 0.0001
+        self.num_epochs= 100
+        self.lr2= 0.001
+        self.batch_size= 512
+        self.load_data= "../data_generate/train_unknown.pt"
