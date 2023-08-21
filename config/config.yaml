@@ -1,0 +1,33 @@
+#generate path
+train_unknown_csv_filepath: "NewUserPredict/dataset/train_unknown.csv"
+train_unknown_save_path: "NewUserPredict/data_generate/train_unknown.pt"
+
+#dataset path
+train_csv: 'NewUserPredict/dataset/train.csv'
+train_unknown_csv: 'NewUserPredict/dataset/train_unknown.csv'
+train_known_csv: 'NewUserPredict/dataset/train_known.csv'
+
+#dataset_analyse path
+processed_fil_1: 'NewUserPredict/data_analyse/processed_file.txt'
+processed_fil_2: 'NewUserPredict/data_analyse/processed_file_2.txt'
+processed_fil_3: 'NewUserPredict/data_analyse/processed_file_3.txt'
+processed_fil_4: 'NewUserPredict/data_analyse/processed_file_4.txt'
+log_analyse: 'NewUserPredict/data_analyse/log_analyse'
+output_key1: 'NewUserPredict/data_analyse/output_key1.json'
+output_key2: 'NewUserPredict/data_analyse/output_key2.json'
+output_key3: 'NewUserPredict/data_analyse/output_key3.json'
+output_key4: 'NewUserPredict/data_analyse/output_key4.json'
+output_key5: 'NewUserPredict/data_analyse/output_key5.json'
+output_key6: 'NewUserPredict/data_analyse/output_key6.json'
+output_key7: 'NewUserPredict/data_analyse/output_key7.json'
+output_key8: 'NewUserPredict/data_analyse/output_key8.json'
+output_key9: 'NewUserPredict/data_analyse/output_key9.json'
+
+#main
+input_size: 10
+lr: 0.0001
+num_epochs: 100
+
+
+#tool
+batch_size: 512
