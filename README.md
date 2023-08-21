@@ -1,10 +1,10 @@
 # newUserPredict
 
-# Notice: I decide to divide dataset to two parts. One is including udmap, another is not including udmap
+# Notice: I decide to divide the dataset into two parts. One contains udmap, another is not including udmap
 
 ## 1. udmap analyse
 
-### There are ten different type of udmap
+### There are ten different types of udmap
 
 ```json
 [
@@ -12,11 +12,11 @@
    {"key8":"unknown"},3
    {"key7":"unknown"},4
    
-   {"key6":"unknown"},
+   {"key6": "unknown"},
    {"key1":"unknown","key2":"unknown","key6":"unknown"},
    {"key3":"unknown","key1":"unknown","key4":"unknown","key2":"unknown","key5":"unknown"},
    {"key4":"unknown","key5":"unknown"},
-   {"key3":"unknown"},
+   {"key3": "unknown"},
    {"key3":"unknown","key2":"unknown"},
    {"key1":"unknown","key2":"unknown"}
 ]
