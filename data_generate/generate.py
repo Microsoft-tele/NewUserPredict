@@ -7,10 +7,10 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import torch.nn.functional as F
 
-from config import Config
+from tools.config_file import NewUserPredictParams
 from dataset import processing_time_stamp, normalize
 
-config = Config()
+params = NewUserPredictParams()
 
 
 def generate_unknown():
@@ -19,11 +19,11 @@ def generate_unknown():
     # Normalizing
     data_tensor = normalize(data, is_known=False)
     # Saving tensor to .pt
-    torch.save(data_tensor, config.train_unknown_pt)
+    torch.save(data_tensor, params.train_unknown_pt)
 
     print(colorama.Fore.LIGHTGREEN_EX)
     print("Convert dataset successfully!!!")
-    print("You can search your .pt at:", config.train_unknown_pt)
+    print("You can search your .pt at:", params.train_unknown_pt)
     print(colorama.Fore.RESET)
 
 

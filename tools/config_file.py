@@ -4,11 +4,11 @@ import pandas
 import yaml
 
 
-class Config:
+class NewUserPredictParams:
     def __init__(self):
-        self.__PROJECT_DIR__ = os.path.abspath(os.path.join(os.getcwd(), ".."))
+        self.__PROJECT_DIR__ = "G:\\git_G\\NewUserPredict"
 
-        with open(os.path.join(self.__PROJECT_DIR__, "config", "config.yaml"), "r") as f:
+        with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
             config_file = yaml.safe_load(f)
 
         # Train dataset absolute path
@@ -39,7 +39,7 @@ class Config:
 
 
 if __name__ == "__main__":
-    config = Config()
-    print(config.train_csv)
-    test_csv = pandas.read_csv(config.train_csv)
+    params = NewUserPredictParams()
+    print(params.train_csv)
+    test_csv = pandas.read_csv(params.train_csv)
     print(test_csv)
