@@ -3,10 +3,10 @@ import numpy as np
 import torch
 from sklearn.preprocessing import MinMaxScaler
 
-from config import Config
+from tools import config_file
 from datetime import datetime
 
-config = Config()
+params = config_file.NewUserPredictParams()
 
 
 def processing_time_stamp():
@@ -19,7 +19,7 @@ def processing_time_stamp():
     :author: Micros0ft
     :return: data: pd
     """
-    data = pd.read_csv(config.train_unknown_csv)
+    data = pd.read_csv(params.train_unknown_csv)
 
     # 将时间戳列转换为日期和时间格式
     data['common_ts'] = pd.to_datetime(data['common_ts'], unit='ms')
@@ -75,4 +75,4 @@ def normalize(data_processed_by_timestamp: pd.DataFrame, is_known: False):
 if __name__ == "__main__":
     data = processing_time_stamp()
     data_tensor = normalize(data, is_known=False)
-    torch.save(data_tensor, config.train_unknown_pt)
+    torch.save(data_tensor, params.train_unknown_pt)

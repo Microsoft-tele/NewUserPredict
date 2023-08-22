@@ -14,9 +14,9 @@ plt_save_path: "photo/"
 
 # train
 input_size: 12
-hidden_size1: 64
-hidden_size2: 32
-lr: 0.01
+hidden_size1: 512
+hidden_size2: 128
+lr: 0.001
 division_rate: 0.8
-num_epochs: 90
-batch_size: 512
+num_epochs: 100
+batch_size: 128
