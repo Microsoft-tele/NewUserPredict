@@ -1,0 +1,45 @@
+import os
+
+import pandas
+import yaml
+
+
+class NewUserPredictParams:
+    def __init__(self):
+        self.__PROJECT_DIR__ = "G:\\git_G\\NewUserPredict"
+
+        with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
+            config_file = yaml.safe_load(f)
+
+        # Train dataset absolute path
+        self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
+        # Test dataset absolute path
+
+        # Train dataset which has been divided into two parts
+        self.train_unknown_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_csv"])
+        self.train_unknown_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_pt"])
+
+        # Test dataset which has been divided into two parts
+        # Maybe this process is useless
+        self.train_known_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_csv"])
+        self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
+
+        # Model
+        self.model_save_path = os.path.join(self.__PROJECT_DIR__, config_file["model_save_path"])
+        self.plt_save_path = os.path.join(self.__PROJECT_DIR__, config_file["plt_save_path"])
+
+        # Load
+        self.division_rate = config_file["division_rate"]
+
+        self.input_size = config_file["input_size"]
+        self.hide_size = config_file["hide_size"]
+        self.lr = config_file["lr"]
+        self.num_epochs = config_file["num_epochs"]
+        self.batch_size = config_file["batch_size"]
+
+
+if __name__ == "__main__":
+    params = NewUserPredictParams()
+    print(params.train_csv)
+    test_csv = pandas.read_csv(params.train_csv)
+    print(test_csv)
