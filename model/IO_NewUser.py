@@ -11,13 +11,16 @@ params = NewUserPredictParams()
 class BinaryClassifier(nn.Module):
     def __init__(self):
         super(BinaryClassifier, self).__init__()
-        self.fc1 = nn.Linear(params.input_size, params.hide_size)
-        self.fc2 = nn.Linear(params.hide_size, 1)  # 输出大小改为1
-        self.sigmoid = nn.Sigmoid()  # 使用 sigmoid 激活函数
+        self.fc1 = nn.Linear(params.input_size, params.hidden_size1)
+        self.fc2 = nn.Linear(params.hidden_size1, params.hidden_size2)  # 新添加的隐藏层
+        self.fc3 = nn.Linear(params.hidden_size2, 1)  # 输出大小改为1
+        self.relu = nn.ReLU()  # 使用 ReLU 激活函数
 
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = self.sigmoid(self.fc2(x))  # 使用 sigmoid 激活函数
+        x = self.relu(self.fc1(x))
+        x = self.relu(self.fc2(x))  # 新隐藏层的激活函数也可以是 ReLU
+        x = self.fc3(x)
+        x = torch.sigmoid(x)  # 将 sigmoid 激活函数添加到最后
         return x
 
 

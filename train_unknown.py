@@ -1,6 +1,7 @@
 import colorama
 import torch
 import os
+import time
 from torch import nn, optim
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -25,6 +26,8 @@ criterion = nn.BCELoss()  # 二元交叉熵损失函数
 optimizer = optim.Adam(model.parameters(), lr=params.lr)
 
 loss_trend = []
+
+start_time = time.time()
 
 for epoch in range(params.num_epochs):
     print(f"Epoch {epoch + 1}/{params.num_epochs}")
@@ -57,6 +60,9 @@ for epoch in range(params.num_epochs):
     print("Batch Loss:", batch_loss)
     loss_trend.append(batch_loss)
 
+end_time = time.time()
+exhausted_time = end_time - start_time
+print("Total time:", exhausted_time / 60)
 # 创建 x 轴数据（代表迭代次数或轮数）
 iterations = range(1, len(loss_trend) + 1)
 # 绘制折线图

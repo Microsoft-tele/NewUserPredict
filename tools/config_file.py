@@ -32,7 +32,8 @@ class NewUserPredictParams:
         self.division_rate = config_file["division_rate"]
 
         self.input_size = config_file["input_size"]
-        self.hide_size = config_file["hide_size"]
+        self.hidden_size1 = config_file["hidden_size1"]
+        self.hidden_size2 = config_file["hidden_size2"]
         self.lr = config_file["lr"]
         self.num_epochs = config_file["num_epochs"]
         self.batch_size = config_file["batch_size"]
