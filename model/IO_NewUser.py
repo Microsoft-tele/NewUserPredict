@@ -13,7 +13,7 @@ class BinaryClassifier(nn.Module):
         super(BinaryClassifier, self).__init__()
         self.fc1 = nn.Linear(params.input_size, params.hidden_size1)
         self.fc2 = nn.Linear(params.hidden_size1, params.hidden_size2)  # 新添加的隐藏层
-        self.fc3 = nn.Linear(params.hidden_size2, 1)  # 输出大小改为1
+        self.fc3 = nn.Linear(params.hidden_size2, 1)
         self.relu = nn.ReLU()  # 使用 ReLU 激活函数
 
     def forward(self, x):

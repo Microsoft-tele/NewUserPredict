@@ -14,7 +14,7 @@ from tools.config_file import NewUserPredictParams
 params = NewUserPredictParams()
 
 # 将数据转换为合适的形状，即 (batch_size, input_size)
-data_loader = load_data(params.train_unknown_pt)
+data_loader = load_data(is_train=True)
 
 # 使用模型进行预测
 # 输入特征的维度

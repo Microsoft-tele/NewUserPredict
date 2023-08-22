@@ -34,7 +34,7 @@ def load_data(is_train: bool = True):
     test_subset = Subset(dataset, range(train_size, total_samples))
 
     # 创建数据加载器
-    train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=True)
+    train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=False)
     test_loader = DataLoader(test_subset, batch_size=params.batch_size, shuffle=False)  # 不需要在测试时打乱顺序
     if is_train:
         return train_loader
