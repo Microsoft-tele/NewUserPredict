@@ -8,6 +8,9 @@ train_unknown_pt: "data_generate/train_unknown.pt"
 train_known_csv: 'dataset/train_known.csv'
 train_known_pt: "data_generate/train_known.pt"
 
+model_save_path: "model/"
+plt_save_path: "photo/"
+
 # dataset_analyse path
 processed_fil_1: 'data_analyse/processed_file.txt'
 processed_fil_2: 'data_analyse/processed_file_2.txt'
@@ -26,8 +29,8 @@ output_key9: 'data_analyse/output_key9.json'
 
 # train
 input_size: 12
-hide_size: 64
+hide_size: 128
 lr: 0.01
 division_rate: 0.8
-num_epochs: 100
+num_epochs: 90
 batch_size: 512

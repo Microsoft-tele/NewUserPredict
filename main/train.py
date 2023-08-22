@@ -1,6 +1,9 @@
+import colorama
 import torch
+import os
 from torch import nn, optim
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 from model.IO_NewUser import BinaryClassifier
 from tools.load_data import load_data
@@ -62,9 +65,20 @@ plt.plot(iterations, loss_trend, marker='o')
 plt.title("Loss Trend Over Iterations")
 plt.xlabel("Iterations")
 plt.ylabel("Loss")
-
 # 显示网格线
 plt.grid()
-
 # 显示图形
 plt.show()
+
+current_time = datetime.now()
+# 格式化时间为年月日时分
+formatted_time = current_time.strftime("%Y_%m_%d_%H_%M")
+
+model_save_path = os.path.join(config.model_save_path, "unknown_" + formatted_time + ".pkl")
+plt_save_path = os.path.join(config.plt_save_path, "unknown_" + formatted_time + ".png")
+torch.save(model, model_save_path)
+plt.savefig(plt_save_path)
+
+print(colorama.Fore.LIGHTGREEN_EX)
+print("Training finish!!!")
+print(colorama.Fore.RESET)

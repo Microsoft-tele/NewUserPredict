@@ -24,6 +24,10 @@ class Config:
         self.train_known_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_csv"])
         self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
 
+        # Model
+        self.model_save_path = os.path.join(self.__PROJECT_DIR__, config_file["model_save_path"])
+        self.plt_save_path = os.path.join(self.__PROJECT_DIR__, config_file["plt_save_path"])
+
         # Load
         self.division_rate = config_file["division_rate"]
 
