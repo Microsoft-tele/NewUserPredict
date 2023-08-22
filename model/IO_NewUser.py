@@ -2,17 +2,17 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from config import Config
+from tools.config_file import NewUserPredictParams
 
-config = Config()
+params = NewUserPredictParams()
 
 
 # 定义模型类
 class BinaryClassifier(nn.Module):
     def __init__(self):
         super(BinaryClassifier, self).__init__()
-        self.fc1 = nn.Linear(config.input_size, config.hide_size)
-        self.fc2 = nn.Linear(config.hide_size, 1)  # 输出大小改为1
+        self.fc1 = nn.Linear(params.input_size, params.hide_size)
+        self.fc2 = nn.Linear(params.hide_size, 1)  # 输出大小改为1
         self.sigmoid = nn.Sigmoid()  # 使用 sigmoid 激活函数
 
     def forward(self, x):
