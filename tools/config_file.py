@@ -6,13 +6,14 @@ import yaml
 
 class NewUserPredictParams:
     def __init__(self):
-        self.__PROJECT_DIR__ = "G:\\git_G\\NewUserPredict"
+        self.__PROJECT_DIR__ = "C:\\Users\\Nahida\\Desktop\\git\\NewUserPredict"
 
         with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
             config_file = yaml.safe_load(f)
 
         # Train dataset absolute path
         self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
+        self.train_all_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_all_pt"])
         # Test dataset absolute path
 
         # Train dataset which has been divided into two parts

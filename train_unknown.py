@@ -103,13 +103,15 @@ formatted_time = current_time.strftime("%Y_%m_%d_%H_%M")
 
 model_save_path = os.path.join(params.model_save_path, "unknown_" + formatted_time + ".pkl")
 plt_save_path = os.path.join(params.plt_save_path, "unknown_" + formatted_time + ".png")
-torch.save(model, model_save_path)
 plt.savefig(plt_save_path)
 # 显示图形
 plt.show()
 
+torch.save(model, model_save_path)
 print(colorama.Fore.LIGHTGREEN_EX)
 print("Training finish!!!")
+print("Model has been saved in:", model_save_path)
+print("Loss trend figure has been saved in:", plt_save_path)
 print(colorama.Fore.RESET)
 
 dt_start = datetime.fromtimestamp(start_time)

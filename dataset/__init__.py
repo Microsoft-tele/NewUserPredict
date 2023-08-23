@@ -9,7 +9,7 @@ from datetime import datetime
 params = config_file.NewUserPredictParams()
 
 
-def processing_time_stamp():
+def processing_time_stamp(file_path: str):
     """
     Through this function, timestamp will be divided into date, hour and weekday
     Please make sure that dataset owns the column whose name is common_ts
@@ -19,7 +19,7 @@ def processing_time_stamp():
     :author: Micros0ft
     :return: data: pd
     """
-    data = pd.read_csv(params.train_unknown_csv)
+    data = pd.read_csv(file_path)
 
     # 将时间戳列转换为日期和时间格式
     data['common_ts'] = pd.to_datetime(data['common_ts'], unit='ms')
