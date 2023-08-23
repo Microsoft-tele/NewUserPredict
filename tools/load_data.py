@@ -21,7 +21,7 @@ class CustomDataset(Dataset):
 
 
 def load_data(is_train: bool = True):
-    data_tensor = torch.load(params.train_unknown_pt)
+    data_tensor = torch.load(params.train_all_pt)
 
     # 创建数据集和数据加载器
     dataset = CustomDataset(data_tensor)

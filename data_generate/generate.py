@@ -15,7 +15,7 @@ params = NewUserPredictParams()
 
 def generate_unknown():
     # Processing timestamp
-    data = processing_time_stamp()
+    data = processing_time_stamp(params.train_unknown_csv)
     # Normalizing
     data_tensor = normalize(data, is_known=False)
     # Saving tensor to .pt
@@ -27,6 +27,20 @@ def generate_unknown():
     print(colorama.Fore.RESET)
 
 
+def generate_known():
+    pass
+
+
+def generate_all():
+    train_csv = processing_time_stamp(params.train_csv)
+    train_csv_normalized = normalize(train_csv, False)
+    torch.save(train_csv_normalized, params.train_all_pt)
+    print(colorama.Fore.LIGHTGREEN_EX)
+    print("Convert dataset successfully!!!")
+    print("You can search your .pt at:", params.train_all_pt)
+    print(colorama.Fore.RESET)
+
+
 # @TODO: To make another function to process dataset with known udmap
 if __name__ == '__main__':
-    generate_unknown()
+    generate_all()

@@ -1,6 +1,7 @@
 # work_dir is NewUserPredict which has been defined at python code
 # generate path
-train_csv: 'dataset/train.csv'
+train_csv: "dataset/train.csv"
+train_all_pt: "data_generate/train_all.pt"
 
 train_unknown_csv: "dataset/train_unknown.csv"
 train_unknown_pt: "data_generate/train_unknown.pt"
