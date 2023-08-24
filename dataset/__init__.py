@@ -9,7 +9,7 @@ from datetime import datetime
 params = config_file.NewUserPredictParams()
 
 
-def processing_time_stamp(file_path: str):
+def processing_time_stamp(file_path: str,is_true=bool):
     """
     Through this function, timestamp will be divided into date, hour and weekday
     Please make sure that dataset owns the column whose name is common_ts
@@ -35,10 +35,13 @@ def processing_time_stamp(file_path: str):
     # 删除原common_ts列data.drop(columns=['common_ts'], inplace=True)
     data.drop(columns=['common_ts'], inplace=True)
 
-    target = data.columns[-4]
-    target_data = data[target]
-    data.drop(columns=[target], inplace=True)
-    data[target] = target_data
+    if is_true:
+        target = data.columns[-4]
+        target_data = data[target]
+        data.drop(columns=[target], inplace=True)
+        data[target] = target_data
+    else:
+        pass
 
     # 保存处理后的数据集到新文件
     # data.to_csv('../dataset/train_unknown_DayHour.csv', index=False)
