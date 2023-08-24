@@ -9,13 +9,20 @@ train_unknown_pt: "data_generate/train_unknown.pt"
 train_known_csv: 'dataset/train_known.csv'
 train_known_pt: "data_generate/train_known.pt"
 
+test_csv: "dataset/test.csv"
+test_all_pt: "data_generate/test_all.pt"
+
+result_all_csv: "result/result.csv"
+
 model_save_path: "model/"
 plt_save_path: "photo/"
+
+we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 
 # train
 input_size: 12
-hidden_size1: 768
+hidden_size1: 896
 hidden_size2: 128
 lr: 0.001
 division_rate: 0.8

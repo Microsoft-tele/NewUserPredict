@@ -55,6 +55,8 @@ class WeCom:
             "Content-Type": "application/json"
         }  # http数据头，类型为json
         r = requests.post(self.url, headers=headers, json=self.content)  # 利用requests库发送post请求
+        print(r)
+        print("Send successfully!")
 
 
 if __name__ == '__main__':

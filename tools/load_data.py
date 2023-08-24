@@ -20,6 +20,17 @@ class CustomDataset(Dataset):
         return sample
 
 
+class PredictDataset(Dataset):
+    def __init__(self, data_tensor):
+        self.data_tensor = data_tensor
+
+    def __len__(self):
+        return len(self.data_tensor)
+
+    def __getitem__(self, idx):
+        return self.data_tensor[idx]
+
+
 def load_data(is_train: bool = True):
     data_tensor = torch.load(params.train_all_pt)
 
@@ -34,7 +45,7 @@ def load_data(is_train: bool = True):
     test_subset = Subset(dataset, range(train_size, total_samples))
 
     # 创建数据加载器
-    train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=False)
+    train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=True)
     test_loader = DataLoader(test_subset, batch_size=params.batch_size, shuffle=False)  # 不需要在测试时打乱顺序
     if is_train:
         return train_loader
@@ -42,14 +53,20 @@ def load_data(is_train: bool = True):
         return test_loader
 
 
+def load_all():
+    data_tensor = torch.load(params.test_all_pt)
+    # 创建数据集和数据加载器
+    dataset = PredictDataset(data_tensor)
+    loader = DataLoader(dataset, batch_size=params.batch_size, shuffle=False)
+    return loader
+
+
 if __name__ == "__main__":
     # 获取第一个批次
-    dataloader = load_data(is_train=True)
+    dataloader = load_all()
     print(len(dataloader))
     first_batch = next(iter(dataloader))
 
-    print("Features in the first batch:")
-    print(first_batch['features'].shape)  # 打印特征
-    print(first_batch['features'][0])  # 打印特征
-    print("Labels in the first batch:")
-    print(first_batch['label'])  # 打印标签
+    print("shape of first batch:")
+    print(first_batch.shape)  # 打印特征
+    print(first_batch[0])  # 打印特征
