@@ -6,6 +6,7 @@ import numpy as np
 import time
 
 from tools import load_data, config_file
+from utils_webhook import WeCom
 
 paras = config_file.NewUserPredictParams()
 
@@ -52,7 +53,8 @@ def select_model():
 
 
 if __name__ == "__main__":
-    model_path = os.path.join(paras.model_save_path, select_model())
+    model_name = select_model()
+    model_path = os.path.join(paras.model_save_path, model_name)
     model = torch.load(model_path).to(device)
     print(model)
     test_loader = load_data.load_data(is_train=False)
@@ -87,7 +89,17 @@ if __name__ == "__main__":
         plt.ylabel('Y axis')
 
         # 显示图形
+        plt.savefig("./tmp.png")
         plt.show()
         break
     print(colorama.Fore.LIGHTGREEN_EX)
     print("Accuracy of model:", 1 - (total_non_zero / total_test))
+
+    weCom = WeCom.WeCom(paras.we_com_webhook_url)
+    content = "# Test result:\n"
+    content += str(model) + "\n"
+    content += f"# Accuracy of {model_name}: {1 - (total_non_zero / total_test)}"
+    weCom.generate_md(content)
+    weCom.send()
+    weCom.generate_img("./tmp.png")
+    weCom.send()
