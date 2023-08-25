@@ -32,7 +32,7 @@ class PredictDataset(Dataset):
 
 
 def load_data(is_train: bool = True):
-    data_tensor = torch.load(params.train_all_pt)
+    data_tensor = torch.load(params.train_norm_pt)
 
     # 创建数据集和数据加载器
     dataset = CustomDataset(data_tensor)
@@ -54,7 +54,7 @@ def load_data(is_train: bool = True):
 
 
 def load_all():
-    data_tensor = torch.load(params.test_all_pt)
+    data_tensor = torch.load(params.test_norm_pt)
     # 创建数据集和数据加载器
     dataset = PredictDataset(data_tensor)
     loader = DataLoader(dataset, batch_size=params.batch_size, shuffle=False)
