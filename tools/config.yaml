@@ -20,6 +20,10 @@ plt_save_path: "photo/"
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 
+train_norm_pt: "data_generate/train_norm.pt"
+test_norm_pt: "data_generate/test_norm.pt"
+
+
 # train
 input_size: 12
 hidden_size1: 896

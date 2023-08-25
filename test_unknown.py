@@ -52,6 +52,32 @@ def select_model():
     return file_list[op]
 
 
+def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):
+    """
+    Calculate precision, recall, and F-score based on raw scores and predictions.
+
+    Args:
+        raw (torch.Tensor): The raw scores or probabilities from a model.
+        pred (torch.Tensor): The binary predictions (0 or 1) from a model.
+        beta (float): The beta parameter for controlling the balance between precision and recall in F-score.
+                      Default is 1.0 (harmonic mean of precision and recall).
+
+    Returns:
+        float: Precision
+        float: Recall
+        float: F-score
+    """
+    TP = ((pred == 1) & (raw >= 0.5)).sum().item()
+    FP = ((pred == 1) & (raw < 0.5)).sum().item()
+    FN = ((pred == 0) & (raw >= 0.5)).sum().item()
+
+    precision = TP / (TP + FP) if TP + FP > 0 else 0.0
+    recall = TP / (TP + FN) if TP + FN > 0 else 0.0
+    f_score = ((1 + beta ** 2) * precision * recall) / ((beta ** 2 * precision) + recall) if (precision + recall) > 0 else 0.0
+
+    return precision, recall, f_score
+
+
 if __name__ == "__main__":
     model_name = select_model()
     model_path = os.path.join(paras.model_save_path, model_name)
@@ -62,6 +88,8 @@ if __name__ == "__main__":
     total_non_zero = 0
     total_test = 0
     for iterator in test_loader:
+        # print(iterator)
+        # print(iterator["features"])
         y_pred = model(iterator["features"].to(device))
         y_pred = y_pred.squeeze()
 
@@ -72,7 +100,13 @@ if __name__ == "__main__":
         # print("shape of y_pred:", y_pred.shape)
         # print(iterator["label"].shape)
         cha = iterator["label"].to(device) - y_pred_binary
-        # print(cha.shape)
+        precision, recall, f_score = F_score(iterator["label"].to(device), y_pred_binary)
+        print(colorama.Fore.LIGHTGREEN_EX)
+        print("precision: ", precision)
+        print("recall: ", recall)
+        print("f_score: ", f_score)
+        print(colorama.Fore.RESET)
+
         cha_numpy = cha.detach().cpu().numpy()
         non_zero_count = np.count_nonzero(cha_numpy)
         total_non_zero += non_zero_count
