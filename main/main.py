@@ -1,5 +1,5 @@
 import torch
-import pandas as pd
+# import pandas as pd
 
 if torch.cuda.is_available():
     print("检测到当前设备有可用GPU:")

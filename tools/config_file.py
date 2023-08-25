@@ -6,7 +6,7 @@ import yaml
 
 class NewUserPredictParams:
     def __init__(self):
-        self.__PROJECT_DIR__ = "D:\\Code\\NewUserPredict"
+        self.__PROJECT_DIR__ = "E:\\project\\NewUserPredict"
 
         with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
             config_file = yaml.safe_load(f)
