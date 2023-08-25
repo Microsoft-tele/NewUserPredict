@@ -88,6 +88,8 @@ if __name__ == "__main__":
     total_non_zero = 0
     total_test = 0
     for iterator in test_loader:
+        # print(iterator)
+        # print(iterator["features"])
         y_pred = model(iterator["features"].to(device))
         y_pred = y_pred.squeeze()
 
@@ -98,9 +100,13 @@ if __name__ == "__main__":
         # print("shape of y_pred:", y_pred.shape)
         # print(iterator["label"].shape)
         cha = iterator["label"].to(device) - y_pred_binary
-        print(F_score(iterator["label"].to(device), y_pred_binary))
+        precision, recall, f_score = F_score(iterator["label"].to(device), y_pred_binary)
+        print(colorama.Fore.LIGHTGREEN_EX)
+        print("precision: ", precision)
+        print("recall: ", recall)
+        print("f_score: ", f_score)
+        print(colorama.Fore.RESET)
 
-        print(type(y_pred_binary))
         cha_numpy = cha.detach().cpu().numpy()
         non_zero_count = np.count_nonzero(cha_numpy)
         total_non_zero += non_zero_count

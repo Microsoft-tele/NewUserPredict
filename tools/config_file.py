@@ -46,6 +46,10 @@ class NewUserPredictParams:
 
         self.we_com_webhook_url = config_file["we_com_webhook_url"]
 
+        # Train dataset and test dataset which has complete normalization
+        self.train_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_norm_pt"])
+        self.test_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_norm_pt"])
+
 
 if __name__ == "__main__":
     params = NewUserPredictParams()
