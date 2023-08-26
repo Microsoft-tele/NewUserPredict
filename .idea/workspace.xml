@@ -14,11 +14,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_generate/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict_all.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp.png" beforeDir="false" afterPath="$PROJECT_DIR$/tmp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/train_known.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/train_known.csv" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/tools/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/config_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/load_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +39,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.config_file">
-    <configuration name="config_file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Python.generate">
+    <configuration name="generate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+
       <module name="NewUserPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.config_file" />
-        <item itemvalue="Python.time_test" />
+        <item itemvalue="Python.generate" />
         <item itemvalue="Python.predict_all" />
         <item itemvalue="Python.test_unknown" />
         <item itemvalue="Python.train_unknown" />
+        <item itemvalue="Python.load_data" />
       </list>
     </recent_temporary>
   </component>
