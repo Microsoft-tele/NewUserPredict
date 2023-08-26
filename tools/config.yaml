@@ -2,6 +2,7 @@
 # generate path
 # Raw dataset
 train_csv: "dataset/train.csv"
+train_processed_csv: "dataset/train_processed.csv"
 train_pt: "data_generate/train.pt"
 
 # divided by udmap
@@ -13,11 +14,8 @@ train_known_pt: "data_generate/train_known.pt"
 
 # Test dataset need to be predicted
 test_csv: "dataset/test.csv"
+test_processed_csv: "dataset/test_processed.csv"
 test_pt: "data_generate/test.pt"
-
-# Dealt train and test dataset together. Notice: should to be removed
-train_norm_pt: "data_generate/train_norm.pt"
-test_norm_pt: "data_generate/test_norm.pt"
 
 # some directory
 model_save_path: "model/"
@@ -27,13 +25,9 @@ result_save_path: "result/"
 # web hook of wecom
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
-train_known_processed_one_hot_csv: "data_generate/train_known_processed_one_hot.csv"
-test_known_processed_one_hot_csv: "data_generate/test_known_processed_one_hot.csv"
-
-
 # train
-input_size: 12
-hidden_size1: 1024
+input_size: 22
+hidden_size1: 2048
 hidden_size2: 128
 lr: 0.001
 division_rate: 0.8
