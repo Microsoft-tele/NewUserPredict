@@ -53,7 +53,7 @@ def load_data(is_train: bool = True):
         return test_loader
 
 
-def load_all():
+def load_test():
     data_tensor = torch.load(params.test_norm_pt)
     # 创建数据集和数据加载器
     dataset = PredictDataset(data_tensor)
@@ -63,7 +63,7 @@ def load_all():
 
 if __name__ == "__main__":
     # 获取第一个批次
-    dataloader = load_all()
+    dataloader = load_test()
     print(len(dataloader))
     first_batch = next(iter(dataloader))
 
