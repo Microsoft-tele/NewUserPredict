@@ -24,6 +24,10 @@ train_norm_pt: "data_generate/train_norm.pt"
 test_norm_pt: "data_generate/test_norm.pt"
 
 
+train_known_processed_one_hot_csv: "data_generate/train_known_processed_one_hot.csv"
+test_known_processed_one_hot_csv: "data_generate/test_known_processed_one_hot.csv"
+
+
 # train
 input_size: 12
 hidden_size1: 896

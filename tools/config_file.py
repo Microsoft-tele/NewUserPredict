@@ -50,6 +50,10 @@ class NewUserPredictParams:
         self.train_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_norm_pt"])
         self.test_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_norm_pt"])
 
+        # Train known processed one hot
+        self.train_known_processed_one_hot_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_processed_one_hot_csv"])
+        self.test_known_processed_one_hot_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_known_processed_one_hot_csv"])
+
 
 if __name__ == "__main__":
     params = NewUserPredictParams()
