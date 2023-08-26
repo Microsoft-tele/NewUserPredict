@@ -1,19 +1,24 @@
 import os
 
+import colorama
 import pandas
 import yaml
 
 
 class NewUserPredictParams:
     def __init__(self):
-        self.__PROJECT_DIR__ = "E:\\project\\NewUserPredict"
+        current_file = os.path.abspath(__file__)
+        parent_dir = os.path.dirname(current_file)
+        great_parent_dir = os.path.dirname(parent_dir)
+
+        self.__PROJECT_DIR__ = great_parent_dir
 
         with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
             config_file = yaml.safe_load(f)
 
         # Train dataset absolute path
         self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
-        self.train_all_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_all_pt"])
+        self.train_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_pt"])
         # Test dataset absolute path
 
         # Train dataset which has been divided into two parts
@@ -26,17 +31,15 @@ class NewUserPredictParams:
         self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
 
         self.test_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_csv"])
-        self.test_all_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_all_pt"])
-
-        self.result_all_csv = os.path.join(self.__PROJECT_DIR__, config_file["result_all_csv"])
+        self.test_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_pt"])
 
         # Model
         self.model_save_path = os.path.join(self.__PROJECT_DIR__, config_file["model_save_path"])
         self.plt_save_path = os.path.join(self.__PROJECT_DIR__, config_file["plt_save_path"])
+        self.result_save_path = os.path.join(self.__PROJECT_DIR__, config_file["result_save_path"])
 
         # Load
         self.division_rate = config_file["division_rate"]
-
         self.input_size = config_file["input_size"]
         self.hidden_size1 = config_file["hidden_size1"]
         self.hidden_size2 = config_file["hidden_size2"]

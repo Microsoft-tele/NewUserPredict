@@ -137,10 +137,10 @@ def adjust_one_hot_csv():
 def generate_all():
     train_csv = processing_time_stamp(params.train_csv, True)
     train_csv_normalized = normalize(train_csv, False)
-    torch.save(train_csv_normalized, params.train_all_pt)
+    torch.save(train_csv_normalized, params.train_pt)
     print(colorama.Fore.LIGHTGREEN_EX)
     print("Convert dataset successfully!!!")
-    print("You can search your .pt at:", params.train_all_pt)
+    print("You can search your .pt at:", params.train_pt)
     print(colorama.Fore.RESET)
 
 
@@ -149,10 +149,10 @@ def generate_verify_test():
     print(test_csv)
     test_csv_normalized = normalize(test_csv, False)
     print(test_csv_normalized)
-    torch.save(test_csv_normalized, params.test_all_pt)
+    torch.save(test_csv_normalized, params.test_pt)
     print(colorama.Fore.LIGHTGREEN_EX)
     print("Convert dataset successfully!!!")
-    print("You can search your .pt at:", params.test_all_pt)
+    print("You can search your .pt at:", params.test_pt)
     print(colorama.Fore.RESET)
 
 

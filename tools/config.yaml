@@ -1,28 +1,31 @@
 # work_dir is NewUserPredict which has been defined at python code
 # generate path
+# Raw dataset
 train_csv: "dataset/train.csv"
-train_all_pt: "data_generate/train_all.pt"
+train_pt: "data_generate/train.pt"
 
+# divided by udmap
 train_unknown_csv: "dataset/train_unknown.csv"
 train_unknown_pt: "data_generate/train_unknown.pt"
 
 train_known_csv: 'dataset/train_known.csv'
 train_known_pt: "data_generate/train_known.pt"
 
+# Test dataset need to be predicted
 test_csv: "dataset/test.csv"
-test_all_pt: "data_generate/test_all.pt"
+test_pt: "data_generate/test.pt"
 
-result_all_csv: "result/result.csv"
-
-model_save_path: "model/"
-plt_save_path: "photo/"
-
-we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
-
-
+# Dealt train and test dataset together. Notice: should to be removed
 train_norm_pt: "data_generate/train_norm.pt"
 test_norm_pt: "data_generate/test_norm.pt"
 
+# some directory
+model_save_path: "model/"
+plt_save_path: "photo/"
+result_save_path: "result/"
+
+# web hook of wecom
+we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 train_known_processed_one_hot_csv: "data_generate/train_known_processed_one_hot.csv"
 test_known_processed_one_hot_csv: "data_generate/test_known_processed_one_hot.csv"
@@ -30,9 +33,9 @@ test_known_processed_one_hot_csv: "data_generate/test_known_processed_one_hot.cs
 
 # train
 input_size: 12
-hidden_size1: 896
+hidden_size1: 1024
 hidden_size2: 128
 lr: 0.001
 division_rate: 0.8
-num_epochs: 500
+num_epochs: 1000
 batch_size: 512

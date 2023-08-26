@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import colorama
 import torch
@@ -31,7 +32,7 @@ if __name__ == "__main__":
     model_path = os.path.join(paras.model_save_path, select_model())
     model = torch.load(model_path).to(device)
     print(model)
-    pred_loader = load_data.load_all()
+    pred_loader = load_data.load_test()
 
     # 创建一个空的列表，用于存储每次循环得到的预测结果
     y_pred_binary_list = []
@@ -48,8 +49,15 @@ if __name__ == "__main__":
 
     y_pred_binary_series = pd.Series(np.concatenate(y_pred_binary_list))
     # 创建一个 DataFrame，并将 Series 添加为一列
-    result_df = pd.DataFrame({"all_predictions": y_pred_binary_series})
+    result_df = pd.DataFrame({"target": y_pred_binary_series})
     # 添加递增的 uuid 列
     result_df.insert(0, "uuid", range(1, len(result_df) + 1))
     print(result_df)
-    result_df.to_csv(paras.result_all_csv)
+
+    current_time = datetime.now()
+    # 格式化时间为年月日时分
+    formatted_time = current_time.strftime("%Y_%m_%d_%H_%M")
+    result_path = os.path.join(paras.result_save_path, formatted_time + ".csv")
+    result_df.to_csv(result_path)
+    print("You can search your result at: ", result_path)
+
