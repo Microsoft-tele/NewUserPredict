@@ -27,6 +27,10 @@ result_save_path: "result/"
 # web hook of wecom
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
+train_known_processed_one_hot_csv: "data_generate/train_known_processed_one_hot.csv"
+test_known_processed_one_hot_csv: "data_generate/test_known_processed_one_hot.csv"
+
+
 # train
 input_size: 12
 hidden_size1: 1024

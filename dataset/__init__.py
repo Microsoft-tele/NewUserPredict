@@ -9,7 +9,7 @@ from datetime import datetime
 params = config_file.NewUserPredictParams()
 
 
-def processing_time_stamp(file_path: str,is_true=bool):
+def processing_time_stamp(file_path: str, is_true=bool):
     """
     Through this function, timestamp will be divided into date, hour and weekday
     Please make sure that dataset owns the column whose name is common_ts
@@ -35,13 +35,13 @@ def processing_time_stamp(file_path: str,is_true=bool):
     # 删除原common_ts列data.drop(columns=['common_ts'], inplace=True)
     data.drop(columns=['common_ts'], inplace=True)
 
-    if is_true:
-        target = data.columns[-4]
-        target_data = data[target]
-        data.drop(columns=[target], inplace=True)
-        data[target] = target_data
-    else:
-        pass
+    # if is_true:
+    #     target = data.columns[-4]
+    #     target_data = data[target]
+    #     data.drop(columns=[target], inplace=True)
+    #     data[target] = target_data
+    # else:
+    #     pass
 
     # 保存处理后的数据集到新文件
     # data.to_csv('../dataset/train_unknown_DayHour.csv', index=False)
@@ -73,6 +73,29 @@ def normalize(data_processed_by_timestamp: pd.DataFrame, is_known: False):
         # data_tensor = torch.from_dlpack()
         data_tensor = torch.from_numpy(normalized_data).float()
         return data_tensor
+
+
+def binary_list_to_num(li: list) -> int:
+    binary_str = ''.join(map(str, li))
+    decimal_num = int(binary_str, 2)
+    return decimal_num
+
+
+def one_hot():
+    one_hot_row = [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    df = pd.read_csv('./train_known_processed.csv')
+    for i, row in df.iterrows():
+        for j in range(1, 10):
+            if row[f'key{j}'] == -1:
+                one_hot_row[j - 1] = 0
+
+            else:
+                one_hot_row[j - 1] = 1
+        num = binary_list_to_num(one_hot_row)
+        # 将整数赋值给 'one_hot' 列
+        df.at[i, 'one_hot'] = num
+    df.to_csv('./train_known_processed_one_hot.csv')
+    print(df)
 
 
 if __name__ == "__main__":
