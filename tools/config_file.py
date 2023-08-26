@@ -1,4 +1,5 @@
 import os
+import sys
 
 import colorama
 import pandas
@@ -12,12 +13,14 @@ class NewUserPredictParams:
         great_parent_dir = os.path.dirname(parent_dir)
 
         self.__PROJECT_DIR__ = great_parent_dir
+        sys.path.append(self.__PROJECT_DIR__)
 
         with open(os.path.join(self.__PROJECT_DIR__, "tools", "config.yaml"), "r") as f:
             config_file = yaml.safe_load(f)
 
         # Train dataset absolute path
         self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
+        self.train_processed_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_processed_csv"])
         self.train_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_pt"])
         # Test dataset absolute path
 
@@ -31,6 +34,7 @@ class NewUserPredictParams:
         self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
 
         self.test_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_csv"])
+        self.test_processed_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_processed_csv"])
         self.test_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_pt"])
 
         # Model
@@ -48,14 +52,6 @@ class NewUserPredictParams:
         self.batch_size = config_file["batch_size"]
 
         self.we_com_webhook_url = config_file["we_com_webhook_url"]
-
-        # Train dataset and test dataset which has complete normalization
-        self.train_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_norm_pt"])
-        self.test_norm_pt = os.path.join(self.__PROJECT_DIR__, config_file["test_norm_pt"])
-
-        # Train known processed one hot
-        self.train_known_processed_one_hot_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_processed_one_hot_csv"])
-        self.test_known_processed_one_hot_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_known_processed_one_hot_csv"])
 
 
 if __name__ == "__main__":
