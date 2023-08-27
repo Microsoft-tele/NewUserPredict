@@ -26,15 +26,10 @@ result_save_path: "result/"
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 # train
-<<<<<<< HEAD
 input_size: 13
-hidden_size1: 1024
-=======
-input_size: 22
-hidden_size1: 4096
->>>>>>> Micros0ft
-hidden_size2: 128
+hidden_size1: 2048
+hidden_size2: 256
 lr: 0.001
-division_rate: 0.8
-num_epochs: 1000
+division_rate: 0.85
+num_epochs: 1200
 batch_size: 512

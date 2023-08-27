@@ -81,12 +81,6 @@ def generate_all():
     print("You can find final processed test dataset at : ", params.test_processed_csv)
     print(colorama.Fore.RESET)
 
-    # print(colorama.Fore.LIGHTGREEN_EX)
-    # print("Convert dataset successfully!!!")
-    # print("You can search your .pt at:", params.train_pt)
-    # print("You can search your .pt at:", params.test_pt)
-    # print(colorama.Fore.RESET)
-
 
 def generate_verify_test():
     test_csv = processing_time_stamp(params.test_csv)
