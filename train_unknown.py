@@ -37,6 +37,8 @@ data_loader = load_data(is_train=True)
 # 创建模型实例
 model = BinaryClassifier().to(device)
 
+print(model)
+
 # 定义损失函数和优化器
 criterion = nn.BCELoss()  # 二元交叉熵损失函数
 optimizer = optim.Adam(model.parameters(), lr=params.lr)
