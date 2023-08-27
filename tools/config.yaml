@@ -27,9 +27,9 @@ we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d
 
 # train
 input_size: 22
-hidden_size1: 2048
+hidden_size1: 4096
 hidden_size2: 128
 lr: 0.001
 division_rate: 0.8
 num_epochs: 1000
-batch_size: 512
+batch_size: 1024
