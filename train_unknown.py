@@ -36,6 +36,7 @@ data_loader = load_data(is_train=True)
 # 输入特征的维度
 # 创建模型实例
 model = BinaryClassifier().to(device)
+print(model)
 
 print(model)
 

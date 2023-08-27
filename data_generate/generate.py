@@ -1,10 +1,10 @@
 import sys
 
+import colorama
+
 from tools.config_file import NewUserPredictParams
 
 params = NewUserPredictParams()
-
-import colorama
 
 from tools import *
 
@@ -24,7 +24,6 @@ def generate_unknown():
 
 
 def generate_all():
-
     df_train = pd.read_csv(params.train_csv)
     df_test = pd.read_csv(params.test_csv)
 
@@ -59,13 +58,34 @@ def generate_all():
                 df_test.at[i, f'key{j}'] = -1
 
     df_train, df_test = one_hot(df_train, df_test)
-    df_final_train, df_final_test = adjust_one_hot_csv(df_train, df_test)
-    df_final_train.to_csv(params.train_processed_csv)
-    df_final_test.to_csv(params.test_processed_csv)
+    df_adjusted_train, df_adjusted_test = adjust_one_hot_csv(df_train, df_test)
+
+
+    # standard_train, standard_test = standard_csv(df_adjusted_train, df_adjusted_test)
+    # print(standard_train)
+    #
+    # standard_train.to_csv(params.train_processed_csv)
+    # standard_test.to_csv(params.test_processed_csv)
+
+    # tensor_train = torch.tensor(df_adjusted_train.values, dtype=torch.float32)
+    # tensor_test = torch.tensor(df_adjusted_test.values, dtype=torch.float32)
+    #
+    # torch.save(tensor_train, params.train_pt)
+    # torch.save(tensor_test, params.test_pt)
+
+    df_adjusted_train.to_csv(params.train_processed_csv)
+    df_adjusted_test.to_csv(params.test_processed_csv)
+
     print(colorama.Fore.LIGHTGREEN_EX)
     print("You can find final processed train dataset at : ", params.train_processed_csv)
     print("You can find final processed test dataset at : ", params.test_processed_csv)
     print(colorama.Fore.RESET)
+
+    # print(colorama.Fore.LIGHTGREEN_EX)
+    # print("Convert dataset successfully!!!")
+    # print("You can search your .pt at:", params.train_pt)
+    # print("You can search your .pt at:", params.test_pt)
+    # print(colorama.Fore.RESET)
 
 
 def generate_verify_test():

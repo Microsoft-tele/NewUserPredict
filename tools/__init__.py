@@ -3,6 +3,7 @@ from tools.config_file import NewUserPredictParams
 
 import torch
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from . import *
 import json
 import pandas as pd
@@ -127,7 +128,31 @@ def adjust_one_hot_csv(df_train: pd.DataFrame, df_test: pd.DataFrame):
 
     test_csv_dropped = test_one_hot_csv.drop(
         columns=[test_one_hot_csv.columns[0], test_one_hot_csv.columns[2]])
-    print(test_csv_dropped)
-    print(test_csv_dropped.columns)
     return train_csv_dropped, test_csv_dropped
+
+
+def standard_csv(df_train: pd.DataFrame, df_test: pd.DataFrame):
+    # drop 'target' tag
+    target_columns = df_train['target']
+    df_train_dropped = df_train.drop(columns=['target'])
+
+    # combine two dataset
+    combined_dataset = pd.concat([df_train_dropped, df_test], ignore_index=True)
+
+    # standard
+    scaler = StandardScaler()
+    df_combined_standard = scaler.fit_transform(combined_dataset)
+
+    # restore DataFrame
+    df_combined_standard = pd.DataFrame(df_combined_standard, columns=combined_dataset.columns)
+
+    # divide dataset
+    num_samples = len(df_train)
+    df_train_standard = df_combined_standard[:num_samples].copy()
+    df_test_standard = df_combined_standard[num_samples:].copy()
+
+    # restore 'target' tag
+    df_train_standard['target'] = target_columns
+
+    return df_train_standard, df_test_standard
 
