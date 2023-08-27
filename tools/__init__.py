@@ -122,12 +122,12 @@ def adjust_one_hot_csv(df_train: pd.DataFrame, df_test: pd.DataFrame):
 
     # 删除第一列与第二列数据以及udmap列
     train_csv_dropped = train_csv_adjust.drop(
-        columns=[train_csv_adjust.columns[0], train_csv_adjust.columns[2]])
+        columns=[train_csv_adjust.columns[2]])
     print(train_csv_dropped)
     print(train_csv_dropped.columns)
 
     test_csv_dropped = test_one_hot_csv.drop(
-        columns=[test_one_hot_csv.columns[0], test_one_hot_csv.columns[2]])
+        columns=[test_one_hot_csv.columns[2]])
     return train_csv_dropped, test_csv_dropped
 
 
