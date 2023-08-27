@@ -9,8 +9,12 @@ train_pt: "data_generate/train.pt"
 train_unknown_csv: "dataset/train_unknown.csv"
 train_unknown_pt: "data_generate/train_unknown.pt"
 
-train_known_csv: 'dataset/train_known.csv'
-train_known_pt: "data_generate/train_known.pt"
+train_2_3_csv: "dataset/train_2_3.csv"
+train_2_3_pt: "data_generate/train_2_3.pt"
+
+train_1_2_3_4_5_csv: 'dataset/train_1_2_3_4_5.csv'
+train_1_2_3_4_5_pt: "data_generate/train_1_2_3_4_5.pt"
+
 
 # Test dataset need to be predicted
 test_csv: "dataset/test.csv"
