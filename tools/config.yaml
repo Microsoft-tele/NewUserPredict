@@ -26,8 +26,8 @@ result_save_path: "result/"
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 # train
-input_size: 22
-hidden_size1: 2048
+input_size: 13
+hidden_size1: 1024
 hidden_size2: 128
 lr: 0.001
 division_rate: 0.8
