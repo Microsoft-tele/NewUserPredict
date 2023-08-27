@@ -60,7 +60,6 @@ def generate_all():
     df_train, df_test = one_hot(df_train, df_test)
     df_adjusted_train, df_adjusted_test = adjust_one_hot_csv(df_train, df_test)
 
-
     # standard_train, standard_test = standard_csv(df_adjusted_train, df_adjusted_test)
     # print(standard_train)
     #
@@ -73,8 +72,8 @@ def generate_all():
     # torch.save(tensor_train, params.train_pt)
     # torch.save(tensor_test, params.test_pt)
 
-    df_adjusted_train.to_csv(params.train_processed_csv)
-    df_adjusted_test.to_csv(params.test_processed_csv)
+    df_adjusted_train.to_csv(params.train_processed_csv, index=False)
+    df_adjusted_test.to_csv(params.test_processed_csv, index=False)
 
     print(colorama.Fore.LIGHTGREEN_EX)
     print("You can find final processed train dataset at : ", params.train_processed_csv)

@@ -30,8 +30,11 @@ class NewUserPredictParams:
 
         # Test dataset which has been divided into two parts
         # Maybe this process is useless
-        self.train_known_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_known_csv"])
-        self.train_known_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_known_pt"])
+        self.train_2_3_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_csv"])
+        self.train_2_3_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_pt"])
+
+        self.train_1_2_3_4_5_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_csv"])
+        self.train_1_2_3_4_5_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_pt"])
 
         self.test_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_csv"])
         self.test_processed_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_processed_csv"])
