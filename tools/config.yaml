@@ -5,16 +5,31 @@ train_csv: "dataset/train.csv"
 train_processed_csv: "dataset/train_processed.csv"
 train_pt: "data_generate/train.pt"
 
-# divided by udmap
+# Train
 train_unknown_csv: "dataset/train_unknown.csv"
 train_unknown_pt: "data_generate/train_unknown.pt"
 
 train_2_3_csv: "dataset/train_2_3.csv"
 train_2_3_pt: "data_generate/train_2_3.pt"
 
+train_3_csv: "dataset/train_3.csv"
+train_3_pt: "data_generate/train_3.pt"
+
 train_1_2_3_4_5_csv: 'dataset/train_1_2_3_4_5.csv'
 train_1_2_3_4_5_pt: "data_generate/train_1_2_3_4_5.pt"
 
+# Test
+test_unknown_csv: "dataset/test_unknown.csv"
+test_unknown_pt: "data_generate/test_unknown.pt"
+
+test_2_3_csv: "dataset/test_2_3.csv"
+test_2_3_pt: "data_generate/test_2_3.pt"
+
+test_3_csv: "dataset/test_3.csv"
+test_3_pt: "data_generate/test_3.pt"
+
+test_1_2_3_4_5_csv: 'dataset/test_1_2_3_4_5.csv'
+test_1_2_3_4_5_pt: "data_generate/test_1_2_3_4_5.pt"
 
 # Test dataset need to be predicted
 test_csv: "dataset/test.csv"
@@ -30,10 +45,10 @@ result_save_path: "result/"
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 # train
-input_size: 13
-hidden_size1: 2048
+input_size: 14
+hidden_size1: 1024
 hidden_size2: 256
 lr: 0.001
 division_rate: 0.85
-num_epochs: 1200
+num_epochs: 1000
 batch_size: 512

@@ -30,7 +30,7 @@ print(device, "is available:")
 params = NewUserPredictParams()
 
 # 将数据转换为合适的形状，即 (batch_size, input_size)
-data_loader = load_data(is_train=True)
+data_loader = load_data(params.train_classified_pt[0], is_train=True)
 
 # 使用模型进行预测
 # 输入特征的维度

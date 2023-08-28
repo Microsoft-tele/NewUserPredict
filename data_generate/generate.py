@@ -9,18 +9,18 @@ params = NewUserPredictParams()
 from tools import *
 
 
-def generate_unknown():
-    # Processing timestamp
-    data = processing_time_stamp(params.train_unknown_csv)
-    # Normalizing
-    data_tensor = normalize(data, is_known=False)
-    # Saving tensor to .pt
-    torch.save(data_tensor, params.train_unknown_pt)
-
-    print(colorama.Fore.LIGHTGREEN_EX)
-    print("Convert dataset successfully!!!")
-    print("You can search your .pt at:", params.train_unknown_pt)
-    print(colorama.Fore.RESET)
+# def generate_unknown():
+#     # Processing timestamp
+#     data = processing_time_stamp(params.train_unknown_csv)
+#     # Normalizing
+#     data_tensor = normalize(data, is_known=False)
+#     # Saving tensor to .pt
+#     torch.save(data_tensor, params.train_unknown_pt)
+#
+#     print(colorama.Fore.LIGHTGREEN_EX)
+#     print("Convert dataset successfully!!!")
+#     print("You can search your .pt at:", params.train_unknown_pt)
+#     print(colorama.Fore.RESET)
 
 
 def generate_all():
@@ -81,16 +81,16 @@ def generate_all():
     print(colorama.Fore.RESET)
 
 
-def generate_verify_test():
-    test_csv = processing_time_stamp(params.test_csv)
-    print(test_csv)
-    test_csv_normalized = normalize(test_csv, False)
-    print(test_csv_normalized)
-    torch.save(test_csv_normalized, params.test_pt)
-    print(colorama.Fore.LIGHTGREEN_EX)
-    print("Convert dataset successfully!!!")
-    print("You can search your .pt at:", params.test_pt)
-    print(colorama.Fore.RESET)
+# def generate_verify_test():
+#     test_csv = processing_time_stamp(params.test_csv)
+#     print(test_csv)
+#     test_csv_normalized = normalize(test_csv, False)
+#     print(test_csv_normalized)
+#     torch.save(test_csv_normalized, params.test_pt)
+#     print(colorama.Fore.LIGHTGREEN_EX)
+#     print("Convert dataset successfully!!!")
+#     print("You can search your .pt at:", params.test_pt)
+#     print(colorama.Fore.RESET)
 
 
 def generate_train_test():

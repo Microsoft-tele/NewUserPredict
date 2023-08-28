@@ -44,6 +44,7 @@
 12. eid = 12  [6k] {key2, key3}, {unknown}
 36. eid = 7  [7]   {key2, key3}, {unknown}
 
+# 以下一组，最终只保留key3
 - 合并，多余的key2删除
 13. eid = 0   [5k] {key3}
 15. eid = 27 [5k]  {key3}
