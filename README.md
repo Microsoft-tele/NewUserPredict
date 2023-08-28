@@ -90,3 +90,19 @@
 38. eid = 23 [3]   {unknown}
 39. eid = 6  [2]   {unknown}
 40. eid = 22, 18, 17, 24 [1]   {unknown}
+
+# Record result
+
+- 0th (key2_key3) class: good 
+  - precision:  0.9736842105263158 
+  - recall:  0.7708333333333334 
+  - f_score:  0.8604651162790697
+  
+- 1th (key3) class: bad
+  -
+- 2th(key4_key5) clss: good
+  - precision:  0.9848484848484849 
+  - recall:  1.0 
+  - f_score:  0.9923664122137404
+- 3th(unknown) class:
+  - 
