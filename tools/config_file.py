@@ -22,19 +22,33 @@ class NewUserPredictParams:
         self.train_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_csv"])
         self.train_processed_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_processed_csv"])
         self.train_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_pt"])
-        # Test dataset absolute path
 
-        # Train dataset which has been divided into two parts
-        self.train_unknown_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_csv"])
-        self.train_unknown_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_pt"])
-
-        # Test dataset which has been divided into two parts
-        # Maybe this process is useless
-        self.train_2_3_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_csv"])
-        self.train_2_3_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_pt"])
-
-        self.train_1_2_3_4_5_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_csv"])
-        self.train_1_2_3_4_5_pt = os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_pt"])
+        # Train dataset via being processing by classify.py
+        self.train_classified_csv = [
+            os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_3_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_csv"])
+        ]
+        self.train_classified_pt = [
+            os.path.join(self.__PROJECT_DIR__, config_file["train_2_3_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_3_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_1_2_3_4_5_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["train_unknown_pt"])
+        ]
+        
+        self.test_classified_csv = [
+            os.path.join(self.__PROJECT_DIR__, config_file["test_2_3_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_3_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_1_2_3_4_5_csv"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_unknown_csv"])
+        ]
+        self.test_classified_pt = [
+            os.path.join(self.__PROJECT_DIR__, config_file["test_2_3_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_3_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_1_2_3_4_5_pt"]),
+            os.path.join(self.__PROJECT_DIR__, config_file["test_unknown_pt"])
+        ]
 
         self.test_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_csv"])
         self.test_processed_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_processed_csv"])

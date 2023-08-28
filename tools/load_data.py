@@ -14,7 +14,8 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         sample = {
-            'features': self.data_tensor[idx, :-1],  # 特征
+            'uuid': self.data_tensor[idx, 0],  # uuid which is used to tag every row
+            'features': self.data_tensor[idx, 1:-1],  # 特征，排除第一个和最后一个元素
             'label': self.data_tensor[idx, -1]  # 标签
         }
         return sample
@@ -31,8 +32,18 @@ class PredictDataset(Dataset):
         return self.data_tensor[idx]
 
 
-def load_data(is_train: bool = True):
-    data_tensor = torch.load(params.train_pt)
+def load_data(pt_file_path: str, is_train: bool = True) -> DataLoader:
+    """
+    Loading dataset from .pt file which has been previously processed by dada_generated factor
+
+    Args:
+        pt_file_path: pt file path
+        is_train: True: load train dataset, else load test dataset
+
+    Returns:
+
+    """
+    data_tensor = torch.load(pt_file_path)
 
     # 创建数据集和数据加载器
     dataset = CustomDataset(data_tensor)
@@ -47,6 +58,7 @@ def load_data(is_train: bool = True):
     # 创建数据加载器
     train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=True)
     test_loader = DataLoader(test_subset, batch_size=params.batch_size, shuffle=False)  # 不需要在测试时打乱顺序
+
     if is_train:
         return train_loader
     else:

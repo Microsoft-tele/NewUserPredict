@@ -8,7 +8,7 @@ import time
 import pandas as pd
 
 from tools import load_data, config_file
-from test_unknown import select_model
+from test import select_model
 
 paras = config_file.NewUserPredictParams()
 
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     # 格式化时间为年月日时分
     formatted_time = current_time.strftime("%Y_%m_%d_%H_%M")
     result_path = os.path.join(paras.result_save_path, formatted_time + ".csv")
-    result_df.to_csv(result_path)
+    result_df.to_csv(result_path, index=False)
     print("You can search your result at: ", result_path)
 
