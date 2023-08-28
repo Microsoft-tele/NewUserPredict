@@ -8,7 +8,7 @@ import time
 import pandas as pd
 
 from tools import load_data, config_file
-from test_unknown import select_model
+from test import select_model
 
 paras = config_file.NewUserPredictParams()
 
