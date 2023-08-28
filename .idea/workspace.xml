@@ -4,53 +4,148 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7b5b9f3-2fe7-43fb-b3bd-fa1c822fe75c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data_generate/classify.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset_analyse/analyse_eid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="692167fe-ca1a-4877-a88a-5350dcbe7664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_generate/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/classify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_generate/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/test_processed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/test_processed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/train_known.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/train_processed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/train_processed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/train_unknown.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_analyse/test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_analyse/train.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_analyse/用户新增预测挑战赛公开数据.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/unknown_2023_08_24_10_29.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/unknown_2023_08_24_13_23.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/unknown_2023_08_26_00_03.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/unknown_2023_08_26_14_22.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_23_16_09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_23_16_14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_23_17_08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_24_01_40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_24_10_29.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_24_13_23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_26_00_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_26_14_22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_26_22_21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_27_15_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/unknown_2023_08_27_19_49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/2023_08_26_22_25.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/result.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_generate/normalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/normalize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/config_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/load_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_unknown.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_unknown.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2UawPyOLiHKuIqJbJaTEIwjgeM9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Python.train_unknown">
+    <configuration name="classify" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NewUserPredict" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_generate" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_generate/classify.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NewUserPredict" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_generate" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_generate/generate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_unknown" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NewUserPredict" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_unknown.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.train_unknown" />
+        <item itemvalue="Python.classify" />
+        <item itemvalue="Python.generate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="692167fe-ca1a-4877-a88a-5350dcbe7664" name="Changes" comment="" />
+      <created>1693190982090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693190982090</updated>
+      <workItem from="1693190983286" duration="13996000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NewUserPredict$normalize.coverage" NAME="normalize Coverage Results" MODIFIED="1693140650627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
-    <SUITE FILE_PATH="coverage/NewUserPredict$train_unknown.coverage" NAME="train_unknown Coverage Results" MODIFIED="1693141305547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/NewUserPredict$generate.coverage" NAME="generate Coverage Results" MODIFIED="1693139839329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$classify.coverage" NAME="classify Coverage Results" MODIFIED="1693225868353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$train_unknown.coverage" NAME="train_unknown Coverage Results" MODIFIED="1693225915657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$generate.coverage" NAME="generate Coverage Results" MODIFIED="1693225833738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
     <SUITE FILE_PATH="coverage/NewUserPredict$test_unknown.coverage" NAME="test_unknown Coverage Results" MODIFIED="1693156559047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$predict_all.coverage" NAME="predict_all Coverage Results" MODIFIED="1693140696438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

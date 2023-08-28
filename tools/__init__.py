@@ -42,33 +42,6 @@ def processing_time_stamp(df: pd.DataFrame):
     return data
 
 
-def normalize(data_processed_by_timestamp: pd.DataFrame, is_known: False):
-    """
-    To normalize dataset which has passed timestamp procession
-    Finally, all columns will be normalized to scale between 0 and 1
-
-    :author: Micros0ft
-    :param data_processed_by_timestamp:
-    :param is_known: To mark the type of dataset is converted in to function
-    :return: data_tensor: torch.tensor
-    """
-    if is_known:
-        print("Now we have no need to dealt with it")
-    else:
-        data_without_uuid_udmap = data_processed_by_timestamp.drop(data_processed_by_timestamp.columns[[0, 2]], axis=1)
-
-        data_numpy = data_without_uuid_udmap.values
-
-        scaler = MinMaxScaler()
-        normalized_data = scaler.fit_transform(data_numpy)
-
-        # data_pd = pd.DataFrame(normalized_data)
-        # print(data_pd)
-        # data_tensor = torch.from_dlpack()
-        data_tensor = torch.from_numpy(normalized_data).float()
-        return data_tensor
-
-
 def convert_udmap(udmap_str):
     try:
         return json.loads(udmap_str)
@@ -155,4 +128,3 @@ def standard_csv(df_train: pd.DataFrame, df_test: pd.DataFrame):
     df_train_standard['target'] = target_columns
 
     return df_train_standard, df_test_standard
-
