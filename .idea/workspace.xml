@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="692167fe-ca1a-4877-a88a-5350dcbe7664" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_generate/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/classify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_generate/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_generate/normalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/normalize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/config_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/load_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_unknown.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_unknown.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/gpu_setting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_unknown.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_unknown.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.train_unknown">
+  <component name="RunManager" selected="Python.gpu_setting">
     <configuration name="classify" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NewUserPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,7 +93,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_unknown" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="gpu_setting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NewUserPredict" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/gpu_setting.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NewUserPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,7 +128,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_unknown.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Nahida\Desktop\git\NewUserPredict\train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,6 +139,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.gpu_setting" />
         <item itemvalue="Python.train_unknown" />
         <item itemvalue="Python.classify" />
         <item itemvalue="Python.generate" />
@@ -134,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693190982090</updated>
-      <workItem from="1693190983286" duration="13996000" />
+      <workItem from="1693190983286" duration="15309000" />
     </task>
     <servers />
   </component>
@@ -144,7 +164,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NewUserPredict$normalize.coverage" NAME="normalize Coverage Results" MODIFIED="1693140650627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
     <SUITE FILE_PATH="coverage/NewUserPredict$classify.coverage" NAME="classify Coverage Results" MODIFIED="1693225868353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
-    <SUITE FILE_PATH="coverage/NewUserPredict$train_unknown.coverage" NAME="train_unknown Coverage Results" MODIFIED="1693225915657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$gpu_setting.coverage" NAME="gpu_setting Coverage Results" MODIFIED="1693226576364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$train_unknown.coverage" NAME="train_unknown Coverage Results" MODIFIED="1693226355043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$generate.coverage" NAME="generate Coverage Results" MODIFIED="1693225833738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
     <SUITE FILE_PATH="coverage/NewUserPredict$test_unknown.coverage" NAME="test_unknown Coverage Results" MODIFIED="1693156559047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$predict_all.coverage" NAME="predict_all Coverage Results" MODIFIED="1693140696438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
