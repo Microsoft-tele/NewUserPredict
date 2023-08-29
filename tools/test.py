@@ -53,8 +53,4 @@ def test(model: torch.nn.Module, data_loader: DataLoader, device: torch.device) 
 
     # 使用 F_score 函数进行评估，假设 F_score 函数接受两个 Tensor 作为参数
     precision, recall, f_score, accuracy = F_score(y_raw_tensor, y_pred_tensor)
-    print(precision)
-    print(recall)
-    print(f_score)
-    print(accuracy)
     return precision, recall, f_score, accuracy

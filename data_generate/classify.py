@@ -4,8 +4,6 @@ import sys
 import colorama
 import torch
 
-from tools.normalize import normalize_by_columns
-
 current_filename = os.path.abspath(__file__)
 parent_dir = os.path.dirname(current_filename)
 great_parent_dir = os.path.dirname(parent_dir)
@@ -13,6 +11,7 @@ sys.path.append(great_parent_dir)
 
 import pandas as pd
 from tools.config_file import NewUserPredictParams
+from tools.normalize import normalize_by_columns
 
 params = NewUserPredictParams()
 
@@ -59,12 +58,13 @@ def divide_by_one_hot(df_csv: pd.DataFrame, one_hot: int) -> pd.DataFrame:
 
 if __name__ == '__main__':
     key2_key3 = [26, 40, 3, 38, 25, 12, 7]
+    # 把Key3融合到unknow
     key3 = [0, 27, 34]
-    key4_key5 = [2, 5, ]
+    key4_key5 = [2, 5]
 
     # If one_hot == 0 单独一组
     unknown = [41, 36, 31, 30, 4, 1, 19, 13, 15, 20, 10, 9, 29, 37, 32, 21, 39, 35, 11, 8, 33, 42, 28, 14, 16, 23, 6,
-               22, 18, 17, 24, ]
+               22, 18, 17, 24]
 
     # the columns will be deleted
     columns_1 = ['key1', 'key4', 'key5', 'key6', 'key7', 'key8', 'key9']
@@ -80,6 +80,7 @@ if __name__ == '__main__':
     test_df_list = []
     is_train = True
 
+    # 分割 eid
     for df in dataset:
 
         # indices_to_remove = unknown_df.index
@@ -116,6 +117,7 @@ if __name__ == '__main__':
             test_df_list.append(key4_key5_df.drop(columns=columns_3))
             test_df_list.append(unknown_df.drop(columns=columns_4))
 
+    # 合并Train 和 test dataset 准备归一处理
     combined_df_list = []
 
     for i in range(len(train_df_list)):

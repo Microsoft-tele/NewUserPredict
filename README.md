@@ -91,6 +91,18 @@
 39. eid = 6  [2]   {unknown}
 40. eid = 22, 18, 17, 24 [1]   {unknown}
 
+# Input setting
+torch.Size([188637, 16])
+torch.Size([62766, 15])
+
+torch.Size([60065, 15])
+torch.Size([19884, 14])
+
+torch.Size([84198, 19])
+torch.Size([28089, 18])
+
+torch.Size([287456, 14])
+torch.Size([96046, 13])
 # Record result
 
 - 0th (key2_key3) class: good 

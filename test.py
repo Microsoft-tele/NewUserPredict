@@ -28,17 +28,9 @@ def select_model():
     print("Please select a model:")
     print(colorama.Fore.RESET)
 
-    op = -1
-    while True:
-        try:
-            op = input()
-            op = int(op)
-            break
-        except:
-            print(colorama.Fore.LIGHTRED_EX)
-            print("Please input again:")
-            print(colorama.Fore.RESET)
-            continue
+    op = input()
+    op = int(op)
+
     return file_list[op]
 
 
@@ -47,13 +39,18 @@ if __name__ == "__main__":
     model_path = os.path.join(params.model_save_path, model_name)
     model = torch.load(model_path).to(device)
     print(model)
-    data_num = 3
+    data_num = 1
 
-    test_loader = load_data.load_data(params.train_classified_pt[data_num], is_train=False)
+    test_loader = load_data.load_data(params.train_classified_pt[data_num], is_train=True)
     print("Loaded data:", params.train_classified_pt[data_num])
 
     precision, recall, f_score, accuracy = test(model=model, data_loader=test_loader, device=device)
 
+    print(colorama.Fore.LIGHTGREEN_EX)
+    print("Precision:", precision)
+    print("Recall:", recall)
+    print("F_score:", f_score)
+    print("Accuracy:", accuracy)
     content = f"""
     # Test result:
     - model name: {model_name}\n"

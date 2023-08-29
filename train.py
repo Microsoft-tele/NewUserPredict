@@ -42,8 +42,8 @@ if __name__ == "__main__":
     params = NewUserPredictParams()
     weCom = WeCom(params.we_com_webhook_url)
     # Updating below 2 params could change training
-    data_num = 1
-    model_name = "key3_"
+    data_num = 3
+    model_name = "unknown_"
 
     # 将数据转换为合适的形状，即 (batch_size, input_size)
     data_loader = load_data(params.train_classified_pt[data_num], is_train=True)
@@ -86,4 +86,4 @@ if __name__ == "__main__":
     - Used time: {exhausted_time}\n
     - Best loss: {best_loss}\n
     """
-    create_md_and_send_to_wecom(md_content)
+    create_md_and_send_to_wecom(md_content, weCom)
