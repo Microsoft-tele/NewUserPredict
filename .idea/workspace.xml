@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="692167fe-ca1a-4877-a88a-5350dcbe7664" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_generate/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generate/classify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tools/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +52,7 @@
       <recent name="C:\Users\Nahida\Desktop\git\NewUserPredict\model" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.train (1)">
     <configuration name="classify" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NewUserPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,9 +165,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train (1)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.classify" />
-        <item itemvalue="Python.train (1)" />
         <item itemvalue="Python.gpu_setting" />
       </list>
     </recent_temporary>
@@ -184,7 +181,7 @@
       <option name="presentableId" value="Default" />
       <updated>1693190982090</updated>
       <workItem from="1693190983286" duration="28949000" />
-      <workItem from="1693280157068" duration="7690000" />
+      <workItem from="1693280157068" duration="12881000" />
     </task>
     <servers />
   </component>
@@ -193,13 +190,13 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NewUserPredict$normalize.coverage" NAME="normalize Coverage Results" MODIFIED="1693140650627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
-    <SUITE FILE_PATH="coverage/NewUserPredict$test.coverage" NAME="test Coverage Results" MODIFIED="1693304720889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$test.coverage" NAME="test Coverage Results" MODIFIED="1693304819369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$gpu_setting.coverage" NAME="gpu_setting Coverage Results" MODIFIED="1693226576364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/NewUserPredict$classify.coverage" NAME="classify Coverage Results" MODIFIED="1693304301387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
     <SUITE FILE_PATH="coverage/NewUserPredict$train_unknown.coverage" NAME="train_unknown Coverage Results" MODIFIED="1693226355043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$generate.coverage" NAME="generate Coverage Results" MODIFIED="1693225833738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_generate" />
     <SUITE FILE_PATH="coverage/NewUserPredict$test_unknown.coverage" NAME="test_unknown Coverage Results" MODIFIED="1693156559047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewUserPredict$predict_all.coverage" NAME="predict_all Coverage Results" MODIFIED="1693140696438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/NewUserPredict$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1693240616471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewUserPredict$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1693310256866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -42,8 +42,8 @@ if __name__ == "__main__":
     params = NewUserPredictParams()
     weCom = WeCom(params.we_com_webhook_url)
     # Updating below 2 params could change training
-    data_num = 3
-    model_name = "unknown_"
+    data_num = 2
+    model_name = "key4_Key5_"
 
     # 将数据转换为合适的形状，即 (batch_size, input_size)
     data_loader = load_data(params.train_classified_pt[data_num], is_train=True)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     print(model)
     # 定义损失函数和优化器
     criterion = nn.BCELoss()  # 二元交叉熵损失函数
-    optimizer = optim.Adam(model.parameters(), lr=params.lr)
+    optimizer = optim.Adam(model.parameters(), lr=params.lr, weight_decay=0.001)
 
     start_time = time.time()
     loss_trend, best_loss = train(model=model, optimizer=optimizer, criterion=criterion, data_loader=data_loader,
