@@ -10,10 +10,11 @@ from model.IO_NewUser import BinaryClassifier
 from tools.load_data import load_data
 from tools.config_file import NewUserPredictParams
 from tools.gpu_setting import set_gpu
-from utils_webhook import WeCom
+from tools.train import train
+from utils_webhook.WeCom import WeCom
 
 
-def show_figure_and_send_to_wecom(plt_save_path: str, data_list: list):
+def create_figure_and_send_to_wecom(photo_save_path: str, data_list: list, webhook: WeCom):
     # 创建 x 轴数据（代表迭代次数或轮数）
     iterations = range(1, len(data_list) + 1)
     # 绘制折线图
@@ -24,74 +25,50 @@ def show_figure_and_send_to_wecom(plt_save_path: str, data_list: list):
     plt.ylabel("Loss")
     # 显示网格线
     plt.grid()
-    plt.savefig(plt_save_path)
+    plt.savefig(photo_save_path)
     # 显示图形
-    plt.show()
+    # plt.show()
+    webhook.generate_img(plt_save_path)
+    webhook.send()
+
+
+def create_md_and_send_to_wecom(content: str, webhook: WeCom):
+    webhook.generate_md(content=content)
+    webhook.send()
 
 
 if __name__ == "__main__":
     device = set_gpu()
     params = NewUserPredictParams()
+    weCom = WeCom(params.we_com_webhook_url)
+    # Updating below 2 params could change training
+    data_num = 3
+    model_name = "unknown_"
 
     # 将数据转换为合适的形状，即 (batch_size, input_size)
-    data_loader = load_data(params.train_classified_pt[0], is_train=True)
-    # 使用模型进行预测
-    # 输入特征的维度
-    # 创建模型实例
+    data_loader = load_data(params.train_classified_pt[data_num], is_train=True)
     model = BinaryClassifier().to(device)
     print(model)
     # 定义损失函数和优化器
     criterion = nn.BCELoss()  # 二元交叉熵损失函数
     optimizer = optim.Adam(model.parameters(), lr=params.lr)
 
-    loss_trend = []
-
     start_time = time.time()
-
-    md_content = """
-    # Train log
-    ## Loss of every epoch\n
-    """
-
-    for epoch in range(params.num_epochs):
-        print(f"Epoch {epoch + 1}/{params.num_epochs}")
-        loss_epoch = []
-        for batch in data_loader:
-            # 提取特征和标签
-            features = batch['features'].to(device)
-            # print(features.shape)
-            labels = batch['label'].to(device)
-            labels = labels.unsqueeze(1)
-            # 清零梯度
-            optimizer.zero_grad()
-            # 前向传播
-            outputs = model(features)
-            # 计算损失
-            loss = criterion(outputs, labels)
-            # 反向传播
-            loss.backward()
-            # 更新参数
-            optimizer.step()
-            loss_epoch.append(loss.item())
-            # 打印损失
-        batch_loss = sum(loss_epoch) / len(loss_epoch)
-        print("Batch Loss:", batch_loss)
-        loss_trend.append(batch_loss)
-
+    loss_trend, best_loss = train(model=model, optimizer=optimizer, criterion=criterion, data_loader=data_loader,
+                                  num_epochs=params.num_epochs, device=device)
     end_time = time.time()
     exhausted_time = end_time - start_time
     print("Total time:", exhausted_time / 60)
-
-    current_time = datetime.now()
     # 格式化时间为年月日时分
-    formatted_time = current_time.strftime("%Y_%m_%d_%H_%M")
 
-    model_name = "key_key3"
-    plt_save_path = os.path.join(params.plt_save_path, model_name + formatted_time + ".png")
+    start_date_time = datetime.fromtimestamp(start_time)
+    formatted_start_time = start_date_time.strftime("%Y-%m-%d--%H-%M_")
+    end_date_time = datetime.fromtimestamp(end_time)
+    formatted_end_time = end_date_time.strftime('%Y-%m-%d--%H-%M_')
 
-    show_figure_and_send_to_wecom(plt_save_path=plt_save_path, data_list=loss_trend)
-
-    model_save_path = os.path.join(params.model_save_path, model_name + formatted_time + ".pkl")
+    plt_save_path = os.path.join(params.plt_save_path, formatted_end_time + model_name + ".png")
+    model_save_path = os.path.join(params.model_save_path, formatted_end_time + model_name + ".pkl")
+    create_figure_and_send_to_wecom(photo_save_path=plt_save_path, data_list=loss_trend, webhook=weCom)
 
     torch.save(model, model_save_path)
     print(colorama.Fore.LIGHTGREEN_EX)
@@ -100,19 +77,13 @@ if __name__ == "__main__":
     print("Loss trend figure has been saved in:", plt_save_path)
     print(colorama.Fore.RESET)
 
-    dt_start = datetime.fromtimestamp(start_time)
-    formatted_start_time = dt_start.strftime("%Y/%m/%d %H:%M")
-
-    dt_end = datetime.fromtimestamp(end_time)
-    formatted_end_time = dt_end.strftime("%Y/%m/%d %H:%M")
-
-    md_content += "## Start time: " + str(formatted_start_time) + "\n"
-    md_content += "## End time: " + str(formatted_end_time) + "\n"
-    md_content += "## Used time: " + str(exhausted_time / 60) + " min\n"
-    md_content += "## Final Loss:" + str(batch_loss) + "\n"
-
-    weCom = WeCom.WeCom("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727")
-    weCom.generate_md(content=md_content)
-    weCom.send()
-    weCom.generate_img(plt_save_path)
-    weCom.send()
+    md_content = f"""
+    # Train log:\n
+    - model name: {model_name}\n
+    # Details:\n
+    - Start time: {formatted_start_time}\n
+    - End time: {formatted_end_time}\n
+    - Used time: {exhausted_time}\n
+    - Best loss: {best_loss}\n
+    """
+    create_md_and_send_to_wecom(md_content, weCom)
