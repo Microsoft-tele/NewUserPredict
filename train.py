@@ -51,7 +51,7 @@ if __name__ == "__main__":
     print(model)
     # 定义损失函数和优化器
     criterion = nn.BCELoss()  # 二元交叉熵损失函数
-    optimizer = optim.Adam(model.parameters(), lr=params.lr)
+    optimizer = optim.Adam(model.parameters(), lr=params.lr, weight_decay=0.001)
 
     start_time = time.time()
     loss_trend, best_loss = train(model=model, optimizer=optimizer, criterion=criterion, data_loader=data_loader,
