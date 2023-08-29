@@ -45,10 +45,10 @@ result_save_path: "result/"
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
 # train
-input_size: 12
-hidden_size1: 1024
-hidden_size2: 128
-lr: 0.001
+input_size: 17
+hidden_size1: 600
+hidden_size2: 64
+lr: 0.01
 division_rate: 0.8
 num_epochs: 1200
 batch_size: 512
