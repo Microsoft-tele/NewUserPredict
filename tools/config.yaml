@@ -37,18 +37,11 @@ test_processed_csv: "dataset/test_processed.csv"
 test_pt: "data_generate/test.pt"
 
 # some directory
-model_save_path: "model/"
+model_save_path: "model/models_pkl/"
 plt_save_path: "photo/"
 result_save_path: "result/"
 
 # web hook of wecom
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
-# train
-input_size: 14
-hidden_size1: 1024
-hidden_size2: 128
-lr: 0.001
 division_rate: 0.8
-num_epochs: 1200
-batch_size: 512
