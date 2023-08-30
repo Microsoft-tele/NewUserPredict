@@ -2,6 +2,8 @@ import hashlib
 import requests
 import base64
 
+from matplotlib import pyplot as plt
+
 
 def calculate_md5_hash_of_file(file_path):
     md5_hash = hashlib.md5()
@@ -57,6 +59,29 @@ class WeCom:
         r = requests.post(self.url, headers=headers, json=self.content)  # 利用requests库发送post请求
         print(r)
         print("Send successfully!")
+
+
+def create_figure_and_send_to_wecom(photo_save_path: str, data_list: list, webhook: WeCom):
+    # 创建 x 轴数据（代表迭代次数或轮数）
+    iterations = range(1, len(data_list) + 1)
+    # 绘制折线图
+    plt.plot(iterations, data_list, marker='o')
+    # 添加标题和标签
+    plt.title("Loss Trend Over Iterations")
+    plt.xlabel("Iterations")
+    plt.ylabel("Loss")
+    # 显示网格线
+    plt.grid()
+    plt.savefig(photo_save_path)
+    # 显示图形
+    # plt.show()
+    webhook.generate_img(photo_save_path)
+    webhook.send()
+
+
+def create_md_and_send_to_wecom(content: str, webhook: WeCom):
+    webhook.generate_md(content=content)
+    webhook.send()
 
 
 if __name__ == '__main__':

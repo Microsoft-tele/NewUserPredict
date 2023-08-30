@@ -32,11 +32,13 @@ class PredictDataset(Dataset):
         return self.data_tensor[idx]
 
 
-def load_data(pt_file_path: str, is_train: bool = True) -> DataLoader:
+def load_data(pt_file_path: str, batch_size: int, division_rate: float, is_train: bool = True) -> DataLoader:
     """
     Loading dataset from .pt file which has been previously processed by dada_generated factor
 
     Args:
+        division_rate:
+        batch_size:
         pt_file_path: pt file path
         is_train: True: load train dataset, else load test dataset
 
@@ -50,19 +52,16 @@ def load_data(pt_file_path: str, is_train: bool = True) -> DataLoader:
 
     # 计算分割索引
     total_samples = len(data_tensor)
-    train_size = int(params.division_rate * total_samples)
+    train_size = int(division_rate * total_samples)
 
     train_subset = Subset(dataset, range(train_size))
     test_subset = Subset(dataset, range(train_size, total_samples))
 
     # 创建数据加载器
-    train_loader = DataLoader(train_subset, batch_size=params.batch_size, shuffle=True)
-    test_loader = DataLoader(test_subset, batch_size=params.batch_size, shuffle=False)  # 不需要在测试时打乱顺序
-
     if is_train:
-        return train_loader
+        return DataLoader(train_subset, batch_size=batch_size, shuffle=True)
     else:
-        return test_loader
+        return DataLoader(test_subset, batch_size=batch_size, shuffle=False)  # 不需要在测试时打乱顺序
 
 
 def load_test():

@@ -76,10 +76,7 @@ def classify_and_normalize(df_train_raw: pd.DataFrame, df_test_raw: pd.DataFrame
         columns_save:
         df_test_raw:
         df_train_raw:
-        df_train:
-        df_test:
         eid_list:
-        columns_delete:
 
     Returns:
 
@@ -130,8 +127,8 @@ if __name__ == '__main__':
 
     eids_columns = {
         "eids": [
-            [26, 40, 3, 38, 25, 12, 7, 0],
-            [27, 34],
+            [26, 40, 3, 38, 25, 12, 7],
+            [0, 27, 34],
             [2, 5],
             [41, 36, 31, 30, 4, 1, 19, 13, 15, 20, 10, 9, 29, 37, 32, 21, 39, 35, 11, 8, 33, 42, 28, 14, 16, 23, 6,
              22, 18, 17, 24]
@@ -152,7 +149,7 @@ if __name__ == '__main__':
         df_train_processed, df_test_processed = classify_and_normalize(df_train_raw=df_train, df_test_raw=df_test,
                                                                        eid_list=eids_columns["eids"][i],
                                                                        columns_save=eids_columns["columns_save"][i],
-                                                                       is_fill=is_fill, key=key)
+                                                                       is_fill=False, key=key)
 
         save_df_to_tensor(df_dataset=df_train_processed, pt_save_path=params.train_classified_pt[i],
                           csv_save_path=params.train_classified_csv[i], is_save_csv=True)

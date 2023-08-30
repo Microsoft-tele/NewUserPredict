@@ -1,6 +1,7 @@
 import sys
 
 import colorama
+import torch
 
 from tools.config_file import NewUserPredictParams
 
@@ -141,4 +142,6 @@ def generate_train_test():
 
 # @TODO: To make another function to process dataset with known udmap
 if __name__ == '__main__':
-    generate_all()
+    tensor_train = torch.load(params.train_pt)
+    print(tensor_train.shape)
+    print(tensor_train[0])
