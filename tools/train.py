@@ -6,7 +6,8 @@ from torch.utils.data import Dataset, DataLoader
 params = NewUserPredictParams()
 
 
-def train(model: torch.nn.Module, optimizer: torch.optim, criterion, data_loader: DataLoader, num_epochs: int, device: torch.device) -> (list, float):
+def train(model: torch.nn.Module, optimizer: torch.optim, criterion, data_loader: DataLoader, num_epochs: int,
+          device: torch.device) -> (list, float):
     """
 
     Args:

@@ -60,6 +60,7 @@ class NewUserPredictParams:
         self.result_save_path = os.path.join(self.__PROJECT_DIR__, config_file["result_save_path"])
 
         # Load
+<<<<<<< HEAD
         self.division_rate = config_file["division_rate"]
         self.input_size = config_file["input_size"]
         self.hidden_size1 = config_file["hidden_size1"]
@@ -69,6 +70,8 @@ class NewUserPredictParams:
         self.batch_size = config_file["batch_size"]
         self.threshold = config_file["threshold"]
 
+=======
+>>>>>>> 27f50b410b1ef7a331bfacc63d47d524e90668e4
         self.we_com_webhook_url = config_file["we_com_webhook_url"]
 
 

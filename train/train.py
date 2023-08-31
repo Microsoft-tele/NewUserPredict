@@ -3,39 +3,15 @@ import torch
 import os
 import time
 from torch import nn, optim
-import matplotlib.pyplot as plt
 from datetime import datetime
 
-from model.IO_NewUser import BinaryClassifier
+from model.IO_BinaryClassifier import BinaryClassifier, BinaryClassifierConfig
 from tools.load_data import load_data
 from tools.config_file import NewUserPredictParams
 from tools.gpu_setting import set_gpu
 from tools.train import train
 from utils_webhook.WeCom import WeCom
-
-
-def create_figure_and_send_to_wecom(photo_save_path: str, data_list: list, webhook: WeCom):
-    # 创建 x 轴数据（代表迭代次数或轮数）
-    iterations = range(1, len(data_list) + 1)
-    # 绘制折线图
-    plt.plot(iterations, data_list, marker='o')
-    # 添加标题和标签
-    plt.title("Loss Trend Over Iterations")
-    plt.xlabel("Iterations")
-    plt.ylabel("Loss")
-    # 显示网格线
-    plt.grid()
-    plt.savefig(photo_save_path)
-    # 显示图形
-    # plt.show()
-    webhook.generate_img(plt_save_path)
-    webhook.send()
-
-
-def create_md_and_send_to_wecom(content: str, webhook: WeCom):
-    webhook.generate_md(content=content)
-    webhook.send()
-
+from utils_webhook.WeCom import create_figure_and_send_to_wecom, create_md_and_send_to_wecom
 
 if __name__ == "__main__":
     device = set_gpu()
@@ -46,16 +22,20 @@ if __name__ == "__main__":
     model_name = "key2_key3_"
 
     # 将数据转换为合适的形状，即 (batch_size, input_size)
-    data_loader = load_data(params.train_classified_pt[data_num], is_train=True)
-    model = BinaryClassifier().to(device)
+    model_config = BinaryClassifierConfig()
+    data_loader = load_data(pt_file_path=params.train_classified_pt[data_num], batch_size=model_config.batch_size,
+                            division_rate=model_config.division_rate, is_train=True)
+    model = BinaryClassifier(model_config).to(device)
+
     print(model)
     # 定义损失函数和优化器
     criterion = nn.BCELoss()  # 二元交叉熵损失函数
-    optimizer = optim.Adam(model.parameters(), lr=params.lr)
+    # @TODO: add lr to config file
+    optimizer = optim.Adam(model.parameters(), lr=model_config.lr)
 
     start_time = time.time()
     loss_trend, best_loss = train(model=model, optimizer=optimizer, criterion=criterion, data_loader=data_loader,
-                                  num_epochs=params.num_epochs, device=device)
+                                  num_epochs=model_config.epoch_num, device=device)
     end_time = time.time()
     exhausted_time = end_time - start_time
     print("Total time:", exhausted_time / 60)

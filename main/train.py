@@ -5,7 +5,7 @@ from torch import nn, optim
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-from model.IO_NewUser import BinaryClassifier
+from model.IO_BinaryClassifier import BinaryClassifier
 from tools.load_data import load_data
 
 from config import Config
