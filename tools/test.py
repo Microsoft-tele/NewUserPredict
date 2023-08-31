@@ -1,5 +1,16 @@
+import os
+import sys
+
+current_filename = os.path.abspath(__file__)
+parent_dir = os.path.dirname(current_filename)
+great_parent_dir = os.path.dirname(parent_dir)
+sys.path.append(great_parent_dir)
+
 import torch
 from torch.utils.data import Dataset, DataLoader
+from tools.config_file import NewUserPredictParams
+
+params = NewUserPredictParams()
 
 
 def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):
@@ -23,7 +34,8 @@ def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):
 
     precision = TP / (TP + FP) if TP + FP > 0 else 0.0
     recall = TP / (TP + FN) if TP + FN > 0 else 0.0
-    f_score = ((1 + beta ** 2) * precision * recall) / ((beta ** 2 * precision) + recall) if (precision + recall) > 0 else 0.0
+    f_score = ((1 + beta ** 2) * precision * recall) / ((beta ** 2 * precision) + recall) if (
+                                                                                                     precision + recall) > 0 else 0.0
 
     accuracy = (((pred == 0) & (raw < 0.5)).sum().item() + ((pred == 1) & (raw >= 0.5)).sum().item()) / len(raw)
     return precision, recall, f_score, accuracy
@@ -40,7 +52,7 @@ def test(model: torch.nn.Module, data_loader: DataLoader, device: torch.device) 
     for iterator in data_loader:
         y_pred = model(iterator["features"].to(device))
         y_pred = y_pred.squeeze()
-        threshold = 0.5
+        threshold = params.threshold
         y_pred_binary = (y_pred >= threshold).float()
 
         # 以列表的形式将数据添加到 y_pred_tensor 和 y_raw_tensor

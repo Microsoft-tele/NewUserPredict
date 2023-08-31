@@ -39,9 +39,9 @@ if __name__ == "__main__":
     model_path = os.path.join(params.model_save_path, model_name)
     model = torch.load(model_path).to(device)
     print(model)
-    data_num = 1
+    data_num = 0
 
-    test_loader = load_data.load_data(params.train_classified_pt[data_num], is_train=True)
+    test_loader = load_data.load_data(params.train_classified_pt[data_num], is_train=False)
     print("Loaded data:", params.train_classified_pt[data_num])
 
     precision, recall, f_score, accuracy = test(model=model, data_loader=test_loader, device=device)

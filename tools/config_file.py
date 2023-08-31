@@ -67,6 +67,7 @@ class NewUserPredictParams:
         self.lr = config_file["lr"]
         self.num_epochs = config_file["num_epochs"]
         self.batch_size = config_file["batch_size"]
+        self.threshold = config_file["threshold"]
 
         self.we_com_webhook_url = config_file["we_com_webhook_url"]
 
