@@ -9,7 +9,7 @@ import time
 from model.IO_BinaryClassifier import BinaryClassifierConfig
 from tools import load_data, config_file
 from tools.gpu_setting import set_gpu
-from tools.test import test
+from tools.test import test, select_model
 from utils_webhook import WeCom
 
 params = config_file.NewUserPredictParams()
@@ -17,23 +17,6 @@ weCom = WeCom.WeCom(params.we_com_webhook_url)
 
 # set gpu id
 device = set_gpu()
-
-
-def select_model():
-    file_list = os.listdir(params.model_save_path)
-
-    print(colorama.Fore.LIGHTGREEN_EX)
-
-    for i in range(len(file_list)):
-        print(f"{i}:{file_list[i]}")
-
-    print("Please select a model:")
-    print(colorama.Fore.RESET)
-
-    op = input()
-    op = int(op)
-
-    return file_list[op]
 
 
 if __name__ == "__main__":
