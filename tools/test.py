@@ -52,7 +52,7 @@ def test(model: torch.nn.Module, data_loader: DataLoader, device: torch.device) 
     for iterator in data_loader:
         y_pred = model(iterator["features"].to(device))
         y_pred = y_pred.squeeze()
-        threshold = params.threshold
+        threshold = 0.5
         y_pred_binary = (y_pred >= threshold).float()
 
         # 以列表的形式将数据添加到 y_pred_tensor 和 y_raw_tensor

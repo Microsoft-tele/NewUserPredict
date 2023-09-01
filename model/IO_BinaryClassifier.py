@@ -23,13 +23,13 @@ class BinaryClassifierConfig(ConfigBase):
     def __init__(self):
         super().__init__()
         self.input_dim = 14
-        self.hidden_dim1 = 2048
+        self.hidden_dim1 = 1500
         self.hidden_dim2 = 128
         self.output_dim = 1
 
-        self.batch_size = 1024
+        self.batch_size = 256
         self.lr = 0.001
-        self.epoch_num = 1000
+        self.epoch_num = 1500
 
 
 # 定义模型类
@@ -38,13 +38,13 @@ class BinaryClassifier(nn.Module):
         super(BinaryClassifier, self).__init__()
         self.config = config
         self.fc1 = nn.Linear(self.config.input_dim, self.config.hidden_dim1)
-        self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.hidden_dim2)  # 新添加的隐藏层
-        self.fc3 = nn.Linear(self.config.hidden_dim2, self.config.output_dim)
+        # self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.hidden_dim2)  # 新添加的隐藏层
+        self.fc3 = nn.Linear(self.config.hidden_dim1, self.config.output_dim)
         self.relu = nn.ReLU()  # 使用 ReLU 激活函数
 
     def forward(self, x):
         x = self.relu(self.fc1(x))
-        x = self.relu(self.fc2(x))  # 新隐藏层的激活函数也可以是 ReLU
+        # x = self.relu(self.fc2(x))  # 新隐藏层的激活函数也可以是 ReLU
         x = self.fc3(x)
         x = torch.sigmoid(x)  # 将 sigmoid 激活函数添加到最后
         return x

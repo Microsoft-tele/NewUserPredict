@@ -1,4 +1,5 @@
 import os
+
 import colorama
 import torch
 import matplotlib.pyplot as plt
@@ -41,17 +42,12 @@ if __name__ == "__main__":
     model = torch.load(model_path).to(device)
     print(model)
     data_num = 0
-<<<<<<< HEAD
-
-    test_loader = load_data.load_data(params.train_classified_pt[data_num], is_train=False)
-=======
 
     config_model = BinaryClassifierConfig()
     test_loader = load_data.load_data(pt_file_path=params.train_classified_pt[data_num],
                                       batch_size=config_model.batch_size, division_rate=config_model.division_rate,
-                                      is_train=True)
+                                      is_train=False)
 
->>>>>>> 27f50b410b1ef7a331bfacc63d47d524e90668e4
     print("Loaded data:", params.train_classified_pt[data_num])
 
     precision, recall, f_score, accuracy = test(model=model, data_loader=test_loader, device=device)

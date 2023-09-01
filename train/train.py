@@ -1,3 +1,10 @@
+import os
+import sys
+current_filename = os.path.abspath(__file__)
+parent_dir = os.path.dirname(current_filename)
+great_parent_dir = os.path.dirname(parent_dir)
+sys.path.append(great_parent_dir)
+
 import colorama
 import torch
 import os

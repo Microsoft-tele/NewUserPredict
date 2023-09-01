@@ -44,16 +44,5 @@ result_save_path: "result/"
 # web hook of wecom
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
-<<<<<<< HEAD
-# train
-input_size: 14
-hidden_size1: 900
-hidden_size2: 32
-lr: 0.005
+
 division_rate: 0.8
-num_epochs: 1800
-batch_size: 512
-threshold: 0.5
-=======
-division_rate: 0.8
->>>>>>> 27f50b410b1ef7a331bfacc63d47d524e90668e4
