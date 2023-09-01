@@ -44,6 +44,16 @@ def load_data_from_csv(train_dataset_path: str, test_dataset_path: str, batch_si
                                                                 'key8', 'key9', 'date', 'hour', 'weekday']).drop(
         columns=['one_hot'])
     len_train = len(df_train)
+
+    eid = df_combined_normalized.pop('eid')
+    df_combined_normalized['eid'] = eid
+    for i in range(1, 9):
+        key = f"x{i}"
+        column = df_combined_normalized.pop(key)
+        df_combined_normalized[key] = column
+    target = df_combined_normalized.pop('target')
+    df_combined_normalized['target'] = target
+    # print(df_combined_normalized)
     df_train_normalized = df_combined_normalized.iloc[:len_train, :]
     df_test_normalized = df_combined_normalized.iloc[len_train:, :].drop(columns=['target'])
 
@@ -72,12 +82,12 @@ class BinaryClassifierEmbeddingConfig(ConfigBase):
     def __init__(self):
         super().__init__()
         self.embedding_input_dim = 9
-        self.embedding_hidden_dims1 = 32
-        self.embedding_output_dim = 10
+        self.embedding_hidden_dims1 = 64
+        self.embedding_output_dim = 2
 
         self.input_dim = self.embedding_output_dim + 12
-        self.hidden_dim1 = 1024
-        self.hidden_dim2 = 64
+        self.hidden_dim1 = 1500
+        self.hidden_dim2 = 128
         self.output_dim = 1
         self.lr = 0.01
 
@@ -105,6 +115,7 @@ class BinaryClassifierEmbedding(nn.Module):
         embedded_x = self.embedding_fc1(embedding_input)
         embedded_x = self.relu(embedded_x)
         embedded_x = self.embedding_fc2(embedded_x)
+        embedded_x = torch.sigmoid(embedded_x)
 
         # 将嵌入结果与后部分拼接
         combined_input = torch.cat((embedded_x, remaining_input), dim=1)
@@ -127,3 +138,6 @@ if __name__ == "__main__":
     data_loader = load_data_from_csv(train_dataset_path=params.train_processed_csv,
                                      test_dataset_path=params.test_processed_csv,
                                      batch_size=512, is_train=0)
+    for i in data_loader:
+        print(i['features'].shape)
+        break

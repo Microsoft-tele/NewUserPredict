@@ -1,5 +1,28 @@
+import os
+
+import colorama
 import torch
 from torch.utils.data import Dataset, DataLoader
+from tools.config_file import NewUserPredictParams
+
+params = NewUserPredictParams()
+
+
+def select_model():
+    file_list = os.listdir(params.model_save_path)
+
+    print(colorama.Fore.LIGHTGREEN_EX)
+
+    for i in range(len(file_list)):
+        print(f"{i}:{file_list[i]}")
+
+    print("Please select a model:")
+    print(colorama.Fore.RESET)
+
+    op = input()
+    op = int(op)
+
+    return file_list[op]
 
 
 def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):
@@ -23,7 +46,8 @@ def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):
 
     precision = TP / (TP + FP) if TP + FP > 0 else 0.0
     recall = TP / (TP + FN) if TP + FN > 0 else 0.0
-    f_score = ((1 + beta ** 2) * precision * recall) / ((beta ** 2 * precision) + recall) if (precision + recall) > 0 else 0.0
+    f_score = ((1 + beta ** 2) * precision * recall) / ((beta ** 2 * precision) + recall) if (
+                                                                                                     precision + recall) > 0 else 0.0
 
     accuracy = (((pred == 0) & (raw < 0.5)).sum().item() + ((pred == 1) & (raw >= 0.5)).sum().item()) / len(raw)
     return precision, recall, f_score, accuracy
