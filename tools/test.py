@@ -1,5 +1,4 @@
 import os
-<<<<<<< HEAD
 import sys
 
 current_filename = os.path.abspath(__file__)
@@ -7,18 +6,13 @@ parent_dir = os.path.dirname(current_filename)
 great_parent_dir = os.path.dirname(parent_dir)
 sys.path.append(great_parent_dir)
 
-=======
-
 import colorama
->>>>>>> 52fb127cad10a70a8fcb50780119d4dce32b1599
+
 import torch
 from torch.utils.data import Dataset, DataLoader
 from tools.config_file import NewUserPredictParams
 
 params = NewUserPredictParams()
-<<<<<<< HEAD
-=======
-
 
 def select_model():
     file_list = os.listdir(params.model_save_path)
@@ -35,7 +29,6 @@ def select_model():
     op = int(op)
 
     return file_list[op]
->>>>>>> 52fb127cad10a70a8fcb50780119d4dce32b1599
 
 
 def F_score(raw: torch.Tensor, pred: torch.Tensor, beta: float = 1.0):

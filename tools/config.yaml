@@ -41,6 +41,10 @@ model_save_path: "model/models_pkl/"
 plt_save_path: "photo/"
 result_save_path: "result/"
 
+# knn
+train_knn_csv: "dataset/train_knn.csv"
+test_knn_csv: "dataset/test_knn.csv"
+
 # web hook of wecom
 we_com_webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a7f64d24-662b-46ba-bbaf-cdf3f6209727"
 
