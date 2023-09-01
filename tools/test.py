@@ -1,12 +1,18 @@
 import os
+import sys
+
+current_filename = os.path.abspath(__file__)
+parent_dir = os.path.dirname(current_filename)
+great_parent_dir = os.path.dirname(parent_dir)
+sys.path.append(great_parent_dir)
 
 import colorama
+
 import torch
 from torch.utils.data import Dataset, DataLoader
 from tools.config_file import NewUserPredictParams
 
 params = NewUserPredictParams()
-
 
 def select_model():
     file_list = os.listdir(params.model_save_path)

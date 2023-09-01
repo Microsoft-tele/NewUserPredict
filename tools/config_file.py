@@ -62,6 +62,9 @@ class NewUserPredictParams:
         # Load
         self.we_com_webhook_url = config_file["we_com_webhook_url"]
 
+        # KNN
+        self.train_knn_csv = os.path.join(self.__PROJECT_DIR__, config_file["train_knn_csv"])
+        self.test_knn_csv = os.path.join(self.__PROJECT_DIR__, config_file["test_knn_csv"])
 
 if __name__ == "__main__":
     params = NewUserPredictParams()

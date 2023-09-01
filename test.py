@@ -1,4 +1,5 @@
 import os
+
 import colorama
 import torch
 import matplotlib.pyplot as plt
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     config_model = BinaryClassifierConfig()
     test_loader = load_data.load_data(pt_file_path=params.train_classified_pt[data_num],
                                       batch_size=config_model.batch_size, division_rate=config_model.division_rate,
-                                      is_train=True)
+                                      is_train=False)
 
     print("Loaded data:", params.train_classified_pt[data_num])
 

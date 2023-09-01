@@ -44,4 +44,3 @@ if __name__ == "__main__":
     print("F_score:", f_score)
     print("Accuracy:", accuracy)
     end_time = time.time()
-

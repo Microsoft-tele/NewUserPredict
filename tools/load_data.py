@@ -29,7 +29,11 @@ class PredictDataset(Dataset):
         return len(self.data_tensor)
 
     def __getitem__(self, idx):
-        return self.data_tensor[idx]
+        sample = {
+            'uuid': self.data_tensor[idx, 0],  # uuid which is used to tag every row
+            'features': self.data_tensor[idx, 1:],  # 特征，排除第一个和最后一个元素
+        }
+        return sample
 
 
 def load_data(pt_file_path: str, batch_size: int, division_rate: float, is_train: bool = True) -> DataLoader:

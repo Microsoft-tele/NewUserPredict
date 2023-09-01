@@ -106,9 +106,29 @@ torch.Size([96046, 13])
 # Record result
 
 - 0th (key2_key3) class: good 
-  - precision:  0.9736842105263158 
-  - recall:  0.7708333333333334 
-  - f_score:  0.8604651162790697
+```
+  BinaryClassifier(
+    (fc1): Linear(in_features=14, out_features=1024, bias=True)
+    (fc2): Linear(in_features=1024, out_features=128, bias=True)
+    (fc3): Linear(in_features=128, out_features=1, bias=True)
+    (relu): ReLU()
+  )
+  Loaded data: E:\project\NewUserPredict\data_generate/train_2_3.pt
+```
+
+  - Precision: 0.897599851728292
+  - Recall: 0.8413829047949966
+  - F_score: 0.8685827018786711
+  - Accuracy: 0.9814825344477929
+  - input_size: 14
+  - hidden_size1: 1024
+  - hidden_size2: 128
+  - lr: 0.01
+  - division_rate: 0.8
+  - num_epochs: 1200
+  - batch_size: 512
+  - threshold: 0.5
+
   
 - 1th (key3) class: bad
   -

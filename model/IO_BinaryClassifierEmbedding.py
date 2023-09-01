@@ -57,6 +57,12 @@ def load_data_from_csv(train_dataset_path: str, test_dataset_path: str, batch_si
     df_train_normalized = df_combined_normalized.iloc[:len_train, :]
     df_test_normalized = df_combined_normalized.iloc[len_train:, :].drop(columns=['target'])
 
+    # print(colorama.Fore.LIGHTGREEN_EX)
+    # print("==========================")
+    # print(df_test_normalized)
+    # print("==========================")
+    # print(colorama.Fore.RESET)
+
     tensor_train = torch.tensor(df_train_normalized.to_numpy(), dtype=torch.float32)
     tensor_test = torch.tensor(df_test_normalized.to_numpy(), dtype=torch.float32)
     # 计算分割索引
@@ -82,14 +88,15 @@ class BinaryClassifierEmbeddingConfig(ConfigBase):
     def __init__(self):
         super().__init__()
         self.embedding_input_dim = 9
-        self.embedding_hidden_dims1 = 64
-        self.embedding_output_dim = 2
+        self.embedding_hidden_dims1 = 32
+        self.embedding_output_dim = 0
 
         self.input_dim = self.embedding_output_dim + 12
-        self.hidden_dim1 = 1500
-        self.hidden_dim2 = 128
+        self.hidden_dim1 = 900
+        self.hidden_dim2 = 64
         self.output_dim = 1
-        self.lr = 0.01
+        self.lr = 0.001
+        self.epoch_num = 1500
 
 
 class BinaryClassifierEmbedding(nn.Module):
@@ -102,8 +109,8 @@ class BinaryClassifierEmbedding(nn.Module):
                                        .config.embedding_hidden_dims1, self.config.embedding_output_dim)
 
         self.fc1 = nn.Linear(self.config.input_dim, self.config.hidden_dim1)
-        self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.hidden_dim2)
-        self.fc3 = nn.Linear(self.config.hidden_dim2, self.config.output_dim)
+        self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.output_dim)
+        # self.fc3 = nn.Linear(self.config.hidden_dim2, self.config.output_dim)
         self.relu = nn.ReLU()  # 使用 ReLU 激活函数
 
     def forward(self, x):
@@ -111,33 +118,33 @@ class BinaryClassifierEmbedding(nn.Module):
         embedding_input = x[:, :self.config.embedding_input_dim]  # 前部分，用于嵌入层
         remaining_input = x[:, self.config.embedding_input_dim:]  # 后部分，将与嵌入结果拼接
 
-        # 嵌入层的前向传播
-        embedded_x = self.embedding_fc1(embedding_input)
-        embedded_x = self.relu(embedded_x)
-        embedded_x = self.embedding_fc2(embedded_x)
-        embedded_x = torch.sigmoid(embedded_x)
+        # # 嵌入层的前向传播
+        # embedded_x = self.embedding_fc1(embedding_input)
+        # embedded_x = self.relu(embedded_x)
+        # embedded_x = self.embedding_fc2(embedded_x)
+        # embedded_x = torch.sigmoid(embedded_x)
 
         # 将嵌入结果与后部分拼接
-        combined_input = torch.cat((embedded_x, remaining_input), dim=1)
+        # combined_input = torch.cat((embedded_x, remaining_input), dim=1)
 
         # 全连接层的前向传播
-        x = self.fc1(combined_input)
+        x = self.fc1(remaining_input)
         x = self.relu(x)
         x = self.fc2(x)
-        x = self.relu(x)
-        x = self.fc3(x)
+        # x = self.relu(x)
+        # x = self.fc3(x)
         x = torch.sigmoid(x)
 
         return x
 
 
 if __name__ == "__main__":
-    # config_model = BinaryClassifierEmbeddingConfig()
-    # model = BinaryClassifierEmbedding(config_model)
-    # print(model)
-    data_loader = load_data_from_csv(train_dataset_path=params.train_processed_csv,
-                                     test_dataset_path=params.test_processed_csv,
-                                     batch_size=512, is_train=0)
-    for i in data_loader:
-        print(i['features'].shape)
-        break
+    config_model = BinaryClassifierEmbeddingConfig()
+    model = BinaryClassifierEmbedding(config_model)
+    print(model)
+    # data_loader = load_data_from_csv(train_dataset_path=params.train_processed_csv,
+    #                                  test_dataset_path=params.test_processed_csv,
+    #                                  batch_size=512, is_train=2)
+    # for i in data_loader:
+    #     print(i['uuid'])
+    #     break
