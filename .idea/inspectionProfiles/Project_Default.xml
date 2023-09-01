@@ -19,6 +19,7 @@
         <list>
           <option value="adjacency" />
           <option value="pd_test" />
+          <option value="df_train" />
         </list>
       </option>
     </inspection_tool>
