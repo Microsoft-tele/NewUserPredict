@@ -56,6 +56,7 @@ class NewUserPredictParams:
 
         # Model
         self.model_save_path = os.path.join(self.__PROJECT_DIR__, config_file["model_save_path"])
+        self.automl_model_save_dir = os.path.join(self.__PROJECT_DIR__, config_file["automl_model_save_dir"])
         self.plt_save_path = os.path.join(self.__PROJECT_DIR__, config_file["plt_save_path"])
         self.result_save_path = os.path.join(self.__PROJECT_DIR__, config_file["result_save_path"])
 
