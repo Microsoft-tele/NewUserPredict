@@ -4,7 +4,6 @@ import numpy as np
 
 from tools.config_file import NewUserPredictParams
 
-import torch
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
 from . import *
