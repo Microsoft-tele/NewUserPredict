@@ -2,7 +2,6 @@ import sys
 
 import colorama
 import pandas as pd
-import torch
 
 from tools.config_file import NewUserPredictParams
 
@@ -10,67 +9,6 @@ params = NewUserPredictParams()
 
 from tools import *
 from tools.normalize import normalize_by_columns, standardize_by_columns
-
-
-# def generate_unknown():
-#     # Processing timestamp
-#     data = processing_time_stamp(params.train_unknown_csv)
-#     # Normalizing
-#     data_tensor = normalize(data, is_known=False)
-#     # Saving tensor to .pt
-#     torch.save(data_tensor, params.train_unknown_pt)
-#
-#     print(colorama.Fore.LIGHTGREEN_EX)
-#     print("Convert dataset successfully!!!")
-#     print("You can search your .pt at:", params.train_unknown_pt)
-#     print(colorama.Fore.RESET)
-
-
-def feature_engineering(normalize_or_standardize: bool):
-    """
-
-    Args:
-        normalize_or_standardize: True -> normalize else standardize
-
-    Returns:
-
-    """
-    pd.set_option('display.max_columns', None)
-    df_train = pd.read_csv(params.train_csv)
-    df_test = pd.read_csv(params.test_csv)
-    # Concat train and test
-    df_combined = pd.concat([df_train, df_test], ignore_index=True)
-
-    # fill key according to udmap
-    df_combined = fill_key_value(df_combined)
-
-    # handle timestamp
-    df_combined = processing_time_stamp(df_combined)
-    df_combined = processing_eid(df_combined)
-
-    # select normalize or standardize
-    # ['eid', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8',
-    #  'key1', 'key2', 'key3', 'key4', 'key5', 'key6', 'key7',
-    #  'key8', 'key9', 'date', 'hour', 'weekday']
-    if normalize_or_standardize:
-        df_combined = normalize_by_columns(df_combined, ['eid', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8',
-                                                         'key1', 'key2', 'key3', 'key4', 'key5', 'key6', 'key7',
-                                                         'key8', 'key9', 'date', 'hour', 'weekday'])
-    else:
-        df_combined = standardize_by_columns(df_combined, ['eid', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8',
-                                                           'key1', 'key2', 'key3', 'key4', 'key5', 'key6', 'key7',
-                                                           'key8', 'key9', 'date', 'hour', 'weekday'])
-
-    df_train_processed: pd.DataFrame = df_combined.iloc[:len(df_train), :]
-    df_test_processed: pd.DataFrame = df_combined.iloc[len(df_train):, :]
-
-    df_train_processed.to_csv(params.train_processed_csv, index=False)
-    df_test_processed.to_csv(params.test_processed_csv, index=False)
-
-    print(colorama.Fore.LIGHTGREEN_EX)
-    print("You can find final processed train dataset at : ", params.train_processed_csv)
-    print("You can find final processed test dataset at : ", params.test_processed_csv)
-    print(colorama.Fore.RESET)
 
 
 def generate_train_test():
@@ -121,7 +59,4 @@ def generate_train_test():
 
 # @TODO: To make another function to process dataset with known udmap
 if __name__ == '__main__':
-    # tensor_train = torch.load(params.train_pt)
-    # print(tensor_train.shape)
-    # print(tensor_train[0])
-    feature_engineering(normalize_or_standardize=True)
+    pass

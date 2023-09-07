@@ -4,8 +4,8 @@ from sklearn.model_selection import train_test_split
 
 def load_automl(train_path: str, test_path: str, is_train: bool):
     features = [
-            'eid', 'eid_target', 'common_ts', 'date', 'hour', 'weekday', 'sin_norm', 'cos_norm', 'x2', 'x4', 'x5', 'x6',
-            'x7', 'x8']
+        'eid', 'eid_target', 'common_ts', 'date', 'hour', 'weekday', 'sin_norm', 'cos_norm', 'sin', 'cos', 'x1', 'x2',
+        'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x1_frequency', 'x2_frequency', 'x6_frequency', 'x8_frequency']
     if is_train:
         # return train
         """
@@ -22,7 +22,7 @@ def load_automl(train_path: str, test_path: str, is_train: bool):
         np_target = df_target.values
         print("Shape of target:", df_target.shape)
 
-        x_train, x_test, y_train, y_test = train_test_split(np_features, np_target, test_size=0.2, random_state=42)
+        x_train, x_test, y_train, y_test = train_test_split(np_features, np_target, test_size=0.1, random_state=42)
 
         return x_train, x_test, y_train, y_test
 
