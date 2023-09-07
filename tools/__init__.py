@@ -188,3 +188,17 @@ def fill_key_value(df_dataset: pd.DataFrame) -> pd.DataFrame:
             num_epoch = 0
 
     return df_combined
+
+
+def adding_frequency(df_dataset: pd.DataFrame) -> pd.DataFrame:
+    x1_freq = df_dataset['x1'].value_counts(normalize=True)
+    x2_freq = df_dataset['x2'].value_counts(normalize=True)
+    x6_freq = df_dataset['x6'].value_counts(normalize=True)
+    x8_freq = df_dataset['x8'].value_counts(normalize=True)
+
+    df_dataset['x1_frequency'] = df_dataset['x1'].map(x1_freq)
+    df_dataset['x2_frequency'] = df_dataset['x2'].map(x2_freq)
+    df_dataset['x6_frequency'] = df_dataset['x6'].map(x6_freq)
+    df_dataset['x8_frequency'] = df_dataset['x8'].map(x8_freq)
+
+    return df_dataset

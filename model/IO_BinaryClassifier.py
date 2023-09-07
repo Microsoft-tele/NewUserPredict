@@ -23,13 +23,13 @@ class BinaryClassifierConfig(ConfigBase):
     def __init__(self):
         super().__init__()
         self.input_dim = 14
-        self.hidden_dim1 = 1500
-        self.hidden_dim2 = 128
+        self.hidden_dim1 = 64
+        self.hidden_dim2 = 64
         self.output_dim = 1
 
-        self.batch_size = 256
-        self.lr = 0.001
-        self.epoch_num = 1500
+        self.batch_size = 512
+        self.lr = 0.01
+        self.epoch_num = 1200
 
 
 # 定义模型类
@@ -38,7 +38,7 @@ class BinaryClassifier(nn.Module):
         super(BinaryClassifier, self).__init__()
         self.config = config
         self.fc1 = nn.Linear(self.config.input_dim, self.config.hidden_dim1)
-        # self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.hidden_dim2)  # 新添加的隐藏层
+        self.fc2 = nn.Linear(self.config.hidden_dim1, self.config.hidden_dim2)  # 新添加的隐藏层
         self.fc3 = nn.Linear(self.config.hidden_dim1, self.config.output_dim)
         self.relu = nn.ReLU()  # 使用 ReLU 激活函数
 
