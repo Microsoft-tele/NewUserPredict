@@ -29,7 +29,7 @@ def train_automl(features: np.ndarray, target: np.ndarray) -> AutoML:
     automl_settings = {
         "task": "classification",  # 分类任务
         "metric": "f1",  # 评估指标为 F1 分数
-        "time_budget": 60 * 60 * 3,
+        "time_budget": 60 * 60 * 2,
         # "estimator_list": ["lgbm"],
     }
 

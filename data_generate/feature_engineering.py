@@ -67,4 +67,4 @@ def feature_engineering(normalize_or_standardize: bool):
 
 
 if __name__ == "__main__":
-    feature_engineering(normalize_or_standardize=True)
+    feature_engineering(normalize_or_standardize=False)
