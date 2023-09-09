@@ -22,7 +22,7 @@ def load_automl(train_path: str, test_path: str, is_train: bool):
         np_target = df_target.values
         print("Shape of target:", df_target.shape)
 
-        x_train, x_test, y_train, y_test = train_test_split(np_features, np_target, test_size=0.1, random_state=42)
+        x_train, x_test, y_train, y_test = train_test_split(np_features, np_target, test_size=0.01, random_state=42)
 
         return x_train, x_test, y_train, y_test
 
