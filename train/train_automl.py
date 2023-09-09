@@ -8,6 +8,7 @@ great_parent_dir = os.path.dirname(parent_dir)
 sys.path.append(great_parent_dir)
 
 from flaml import AutoML
+from ray import tune
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, precision_score, recall_score
 import joblib
@@ -29,8 +30,8 @@ def train_automl(features: np.ndarray, target: np.ndarray) -> AutoML:
     automl_settings = {
         "task": "classification",  # 分类任务
         "metric": "f1",  # 评估指标为 F1 分数
-        "time_budget": 60 * 60 * 2,
-        # "estimator_list": ["lgbm"],
+        "time_budget": 60 * 60 * 4,
+        "estimator_list": ["lgbm"],
     }
 
     # 使用 AutoML 进行训练和优化

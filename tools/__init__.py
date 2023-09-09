@@ -6,6 +6,7 @@ from tools.config_file import NewUserPredictParams
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder, KBinsDiscretizer
 from . import *
 import json
 import pandas as pd
@@ -58,6 +59,34 @@ def processing_eid(df_dataset: pd.DataFrame) -> pd.DataFrame:
     # 通过 'eid' 合并 total_df 和 eid_target
     df_dataset = pd.merge(df_dataset, eid_target, on="eid", how="left")
     # 显示前几行的数据
+    return df_dataset
+
+
+def processing_xith(df_dataset: pd.DataFrame) -> pd.DataFrame:
+    # One-hot encoding for selected features
+    enc = OneHotEncoder(drop="if_binary", sparse_output=False)
+    features_to_encode = ['x1', 'x2', 'x6', 'x7']
+
+    xith_one_hot = enc.fit_transform(df_dataset[features_to_encode])
+    encoded_df = pd.DataFrame(xith_one_hot, columns=enc.get_feature_names_out(features_to_encode))
+
+    # KBinsDiscretizer for each selected feature with different bin counts
+    features_to_discretize = ['x3', 'x4', 'x5']
+    n_bins = [2, 8, 16]  # Adjust the number of bins as needed
+
+    discretized_dfs = []
+
+    for feature, bins in zip(features_to_discretize, n_bins):
+        discretizer = KBinsDiscretizer(n_bins=bins, encode='ordinal')
+        discretized_features = discretizer.fit_transform(df_dataset[[feature]])
+        discretized_df = pd.DataFrame(discretized_features, columns=[f'{feature}_bin'])
+        discretized_dfs.append(discretized_df)
+
+    # Concatenate the encoded columns with the discretized columns
+    df_dataset = pd.concat([df_dataset, encoded_df] + discretized_dfs, axis=1)
+
+    # Remove the original columns
+    # df_dataset.drop(columns=features_to_encode + features_to_discretize, inplace=True)
     return df_dataset
 
 
