@@ -31,7 +31,7 @@ def processing_time_stamp(df: pd.DataFrame):
     # 删除原common_ts列data.drop(columns=['common_ts'], inplace=True)
     data['common_ts'] = data['common_ts'] / 31536000000 + 1970 - 2023
     # 提取日期和小时
-    data['date'] = data['common_ts_dt'].dt.day
+    data['day'] = data['common_ts_dt'].dt.day
     data['hour'] = data['common_ts_dt'].dt.hour
     data['weekday'] = data['common_ts_dt'].dt.weekday  # 0=Monday, 6=Sunday
     # @TODO: 注意回来看这里的时间戳处理
@@ -40,8 +40,20 @@ def processing_time_stamp(df: pd.DataFrame):
     data['sin'] = np.sin(2 * np.pi * data['common_ts'])
     data['cos'] = np.cos(2 * np.pi * data['common_ts'])
 
-    # 保存处理后的数据集到新文件
-    # data.to_csv('../dataset/train_unknown_DayHour.csv', index=False)
+    # 特征衍生: group by hour
+    aggs = {
+        'target': ['mean', 'skew']
+    }
+    df_grouped_hour = data.groupby(['hour']).agg(aggs).reset_index()
+    df_grouped_hour.columns = ['hour', 'hour_target_mean', 'hour_target_skew']
+    data = pd.merge(data, df_grouped_hour, how='left', on='hour')
+
+    # add hour section
+    data['hour_section'] = ((data['hour']) // 6).astype('int64')
+    df_grouped_hour_section = data.groupby('hour_section').agg(aggs).reset_index()
+    df_grouped_hour_section.columns = ['hour_section', 'hour_section_target_mean', 'hour_section_target_skew']
+    data = pd.merge(data, df_grouped_hour_section, how='left', on='hour_section')
+
     return data
 
 
@@ -58,7 +70,36 @@ def processing_eid(df_dataset: pd.DataFrame) -> pd.DataFrame:
 
     # 通过 'eid' 合并 total_df 和 eid_target
     df_dataset = pd.merge(df_dataset, eid_target, on="eid", how="left")
-    # 显示前几行的数据
+
+    def q1(x):
+        """
+        下四分位数
+        """
+        return x.quantile(0.25)
+
+    def q2(x):
+        """
+        上四分位数
+        """
+        return x.quantile(0.75)
+
+    aggs = {}
+    colNames_sub = ['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'target']
+    # 字段汇总统计量设置
+    for col in colNames_sub:
+        # 'min', 'max', 'var', 'skew', 'median', 'nunique', 'count'
+        aggs[col] = ['mean', 'median', q1, q2]
+
+    df_grouped = df_dataset.groupby('eid').agg(aggs).reset_index()
+
+    columns_new = []
+    for i in df_grouped.columns:
+        columns_new.append(f"{i[0]}_{i[1]}")
+
+    df_grouped.columns = columns_new
+    df_grouped = df_grouped.rename(columns={'eid_': 'eid'})
+    df_dataset = pd.merge(df_dataset, df_grouped, how='left', on='eid')
+
     return df_dataset
 
 
@@ -223,11 +264,13 @@ def adding_frequency(df_dataset: pd.DataFrame) -> pd.DataFrame:
     x1_freq = df_dataset['x1'].value_counts(normalize=True)
     x2_freq = df_dataset['x2'].value_counts(normalize=True)
     x6_freq = df_dataset['x6'].value_counts(normalize=True)
+    x7_freq = df_dataset['x7'].value_counts(normalize=True)
     x8_freq = df_dataset['x8'].value_counts(normalize=True)
 
     df_dataset['x1_frequency'] = df_dataset['x1'].map(x1_freq)
     df_dataset['x2_frequency'] = df_dataset['x2'].map(x2_freq)
     df_dataset['x6_frequency'] = df_dataset['x6'].map(x6_freq)
+    df_dataset['x7_frequency'] = df_dataset['x7'].map(x7_freq)
     df_dataset['x8_frequency'] = df_dataset['x8'].map(x8_freq)
 
     return df_dataset

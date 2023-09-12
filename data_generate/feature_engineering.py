@@ -46,7 +46,7 @@ def feature_engineering(normalize_or_standardize: bool):
     # ['eid', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8',
     #  'key1', 'key2', 'key3', 'key4', 'key5', 'key6', 'key7',
     #  'key8', 'key9', 'date', 'hour', 'weekday']
-    features_list = ['eid', 'date', 'hour', 'weekday']
+    features_list = ['eid']
     if normalize_or_standardize:
         df_combined = normalize_by_columns(df_combined, features_list)
     else:
